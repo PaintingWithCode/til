@@ -1,0 +1,8 @@
+<header
+	class="sticky top-0 z-20 flex h-16 w-full flex-row items-center justify-between border-b-2 border-black px-8"
+>
+	<a href="/" class="flex flex-row items-center space-x-2">
+		<img src="/logo.svg" alt="Logo" width="20" height="32" class="h-8 w-5" />
+		<p class="text-xl font-extrabold uppercase tracking-wide">Today I Learned</p>
+	</a>
+</header>
