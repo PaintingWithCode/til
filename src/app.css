@@ -5,4 +5,5 @@
 body {
 	@apply antialiased;
 	text-rendering: optimizeLegibility;
+	background: hsl(42deg 57% 92%);
 }

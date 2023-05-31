@@ -1,1 +1,13 @@
-<h1 class="pt-12 text-center text-3xl font-bold">Hello world!</h1>
+<script>
+	import Post from '$lib/ui/Post.svelte';
+</script>
+
+<svelte:head>
+	<title>PaintingWithCode • Today I Learned</title>
+</svelte:head>
+
+<div class="flex flex-col space-y-8 py-8">
+	{#each Array(5) as _}
+		<Post />
+	{/each}
+</div>
