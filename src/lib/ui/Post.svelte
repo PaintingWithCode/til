@@ -1,3 +1,21 @@
+<script lang="ts">
+	import millify from 'millify';
+
+	let views = 123;
+	let hasBeenLiked = false;
+	let likes = 99;
+
+	function onLikeClick() {
+		if (hasBeenLiked) {
+			likes -= 1;
+			hasBeenLiked = false;
+		} else {
+			likes += 1;
+			hasBeenLiked = true;
+		}
+	}
+</script>
+
 <article class="z-10 border border-dune-800/80 bg-desert-storm">
 	<div class="px-10 py-8">
 		<time class="font-mono font-semibold text-dune-600" datetime="2023-04-01"
@@ -27,7 +45,7 @@
 			authenticity, tradition, and taste.
 		</p>
 	</div>
-	<div class="flex h-10 items-center border-t border-dune-800/80 font-mono text-dune-800">
+	<div class="flex h-10 items-center border-t border-dune-800/80 font-mono text-dune-700">
 		<a
 			href="/"
 			class="basis-1/3 border-r border-dune-800/80 py-3 text-center font-bold leading-none transition-colors hover:text-black"
@@ -35,16 +53,27 @@
 		>
 		<a
 			href="/"
-			class="basis-1/3 border-r border-dune-800/80 py-3 text-center font-bold leading-none transition-colors hover:text-black"
+			class="basis-1/3 space-x-2 border-r border-dune-800/80 py-3 text-center font-bold leading-none transition-colors hover:text-black"
 			>PERMALINK</a
 		>
-		<div class="flex basis-1/3 items-center justify-center space-x-8 py-3 font-medium">
-			<span class="flex items-center leading-none"
-				><i class="mu mu-show mr-1.5 text-2xl leading-none" />123</span
+		<div
+			class="flex basis-1/3 items-center justify-center space-x-4 py-3 pl-6 pr-4 font-medium text-dune-900"
+		>
+			<div class="flex basis-1/2 items-center justify-center leading-none">
+				<i class="mu mu-show mr-1.5 text-2xl leading-none" />
+				{millify(views, { precision: 2 })}
+			</div>
+			<button
+				type="button"
+				class="flex basis-1/2 items-center justify-center leading-none"
+				on:click={onLikeClick}
 			>
-			<span class="flex items-center leading-none"
-				><i class="mu mu-heart mr-1.5 text-2xl leading-none text-red-600" />5</span
-			>
+				<i
+					class="mu mu-heart mr-1.5 text-2xl leading-none text-red-600 transition-opacity"
+					style={`opacity: ${hasBeenLiked ? 1 : 0.4}`}
+				/>
+				<span class="flex flex-grow">{millify(likes, { precision: 2 })}</span>
+			</button>
 		</div>
 	</div>
 </article>

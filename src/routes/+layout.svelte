@@ -2,15 +2,39 @@
 	import 'microns/fonts/microns.css';
 	import '../app.css';
 
-	import { Header } from '$lib/ui';
+	import { Header, Footer } from '$lib/ui';
+
+	let scrollY = 0;
+	let showFooter = true;
+	let headerBgOpacity = 0;
+
+	type ScrollEvent = UIEvent & {
+		currentTarget: EventTarget & HTMLDivElement;
+	};
+
+	function onContainerScroll(event: ScrollEvent) {
+		const newScrollY = event.currentTarget.scrollTop;
+		headerBgOpacity = Math.max(0, Math.min(1, newScrollY / 32));
+
+		if (newScrollY === 0 || newScrollY < scrollY) {
+			showFooter = true;
+		} else {
+			showFooter = false;
+		}
+
+		scrollY = newScrollY;
+	}
 </script>
 
-<div id="container" class="min-w-screen h-screen overflow-y-scroll">
-	<Header />
-	<div id="paper" />
-	<main class="mx-auto min-h-[calc(100vh-4rem)] max-w-2xl selection:bg-raffia-200">
+<div id="container" class="min-w-screen h-screen overflow-y-scroll" on:scroll={onContainerScroll}>
+	<div id="paper-texture" />
+	<Header {headerBgOpacity} />
+	<main class="mx-auto min-h-[calc(100vh-6.5rem)] max-w-2xl selection:bg-supernova/50">
 		<slot />
 	</main>
+	{#if showFooter}
+		<Footer />
+	{/if}
 </div>
 
 <style>
@@ -32,8 +56,8 @@
 		);
 	}
 
-	#paper {
-		opacity: 0.2;
+	#paper-texture {
+		opacity: 0.25;
 		z-index: 1;
 		background-image: url('images/paper.png');
 		background-size: auto;

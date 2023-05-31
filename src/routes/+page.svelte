@@ -1,5 +1,5 @@
 <script>
-	import Post from '$lib/ui/Post.svelte';
+	import { Post } from '$lib/ui';
 </script>
 
 <svelte:head>

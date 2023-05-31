@@ -8,6 +8,7 @@ export default {
 			colors: {
 				black: '#1d1d1b',
 				white: '#fafafa',
+				supernova: '#febd3c',
 				'desert-storm': '#f8f8f6',
 				raffia: {
 					50: '#fbf8f1',
