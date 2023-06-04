@@ -24,8 +24,8 @@
 		</time>
 		<a href="/post/why-montreal-bagels-are-better">
 			<h1
-				use:balancer={{ ratio: 0.55 }}
-				class="mt-1.5 text-3xl font-extrabold leading-tight tracking-tight text-black underline decoration-desert-storm transition-colors hover:decoration-dune-800"
+				use:balancer={{ enabled: true, ratio: 0.55 }}
+				class="mt-1.5 font-display text-3xl font-extrabold leading-tight text-black underline decoration-desert-storm transition-colors hover:decoration-dune-800"
 			>
 				Why Montreal bagels are better than NYC ones
 			</h1>
@@ -53,18 +53,20 @@
 			authenticity, tradition, and taste.
 		</p>
 	</div>
-	<div class="flex h-10 items-center border-t border-dune-800/80 font-mono text-black">
+	<div
+		class="flex h-10 items-center border-t border-dune-800/80 font-mono font-bold leading-none text-black"
+	>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
 			<a
 				href="/"
-				class="font-bold leading-none underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
+				class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
 				>#JOKE</a
 			>
 		</div>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
 			<a
 				href="/post/why-montreal-bagels-are-better"
-				class="font-bold leading-none underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
+				class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
 				>PERMALINK</a
 			>
 		</div>

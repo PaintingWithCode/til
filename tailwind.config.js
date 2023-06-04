@@ -38,8 +38,9 @@ export default {
 				},
 			},
 			fontFamily: {
-				mono: ['Iosevka Custom Mono', defaultTheme.fontFamily.mono],
-				sans: ['Inter', defaultTheme.fontFamily.sans],
+				mono: ['Iosevka', defaultTheme.fontFamily.mono],
+				sans: ['Inter Variable', defaultTheme.fontFamily.sans],
+				display: ['Inter Tight Variable', defaultTheme.fontFamily.sans],
 			},
 		},
 	},

@@ -1,5 +1,7 @@
 <script lang="ts">
 	import 'microns/fonts/microns.css';
+	import '@fontsource-variable/inter';
+	import '@fontsource-variable/inter-tight';
 	import '../app.css';
 
 	import { Header, Footer } from '$lib/ui';
