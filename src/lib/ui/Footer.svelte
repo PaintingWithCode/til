@@ -14,7 +14,7 @@
 			&copy; {new Date().getFullYear()}
 			<a
 				href="https://aravindmurali.com"
-				class="font-semibold underline-offset-4 hover:underline"
+				class="font-semibold decoration-2 underline-offset-4 hover:underline"
 				target="_blank"
 				rel="noreferrer"
 				aria-label="PaintingWithCode">PaintingWithCode</a

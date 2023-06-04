@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { balancer } from 'svelte-action-balancer';
 	import millify from 'millify';
 
 	let views = 123;
@@ -18,10 +19,17 @@
 
 <article class="z-10 border border-dune-800/80 bg-desert-storm">
 	<div class="px-10 py-8">
-		<time class="font-mono font-semibold text-dune-600" datetime="2023-04-01"
-			>{'2023-04-01'.replaceAll('-', '/')}</time
-		>
-		<a href="/"><h1>Why Montreal bagels are better</h1></a>
+		<time class="font-mono font-semibold text-dune-600" datetime="2023-04-01">
+			{'2023-04-01'.replaceAll('-', '/')}
+		</time>
+		<a href="/post/why-montreal-bagels-are-better">
+			<h1
+				use:balancer={{ ratio: 0.55 }}
+				class="mt-1.5 text-3xl font-extrabold leading-tight tracking-tight text-black underline decoration-desert-storm transition-colors hover:decoration-dune-800"
+			>
+				Why Montreal bagels are better than NYC ones
+			</h1>
+		</a>
 		<p>
 			Montreal bagels are a delicacy renowned for their unique texture and flavor. Unlike New
 			York-style bagels, Montreal bagels are hand-rolled, boiled in honey water, and baked in a
@@ -45,17 +53,21 @@
 			authenticity, tradition, and taste.
 		</p>
 	</div>
-	<div class="flex h-10 items-center border-t border-dune-800/80 font-mono text-dune-700">
-		<a
-			href="/"
-			class="basis-1/3 border-r border-dune-800/80 py-3 text-center font-bold leading-none transition-colors hover:text-black"
-			>#JOKE</a
-		>
-		<a
-			href="/"
-			class="basis-1/3 space-x-2 border-r border-dune-800/80 py-3 text-center font-bold leading-none transition-colors hover:text-black"
-			>PERMALINK</a
-		>
+	<div class="flex h-10 items-center border-t border-dune-800/80 font-mono text-black">
+		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
+			<a
+				href="/"
+				class="font-bold leading-none underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
+				>#JOKE</a
+			>
+		</div>
+		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
+			<a
+				href="/post/why-montreal-bagels-are-better"
+				class="font-bold leading-none underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
+				>PERMALINK</a
+			>
+		</div>
 		<div
 			class="flex basis-1/3 items-center justify-center space-x-4 py-3 pl-6 pr-4 font-medium text-dune-900"
 		>
@@ -63,33 +75,20 @@
 				<i class="mu mu-show mr-1.5 text-2xl leading-none" />
 				{millify(views, { precision: 2 })}
 			</div>
-			<button
-				type="button"
-				class="flex basis-1/2 items-center justify-center leading-none"
-				on:click={onLikeClick}
-			>
-				<i
-					class="mu mu-heart mr-1.5 text-2xl leading-none text-red-600 transition-opacity"
+			<div class="flex basis-1/2 items-center justify-center leading-none">
+				<button
+					type="button"
+					on:click={onLikeClick}
+					class="mu mu-heart text-2xl leading-none text-red-600 transition-opacity"
 					style={`opacity: ${hasBeenLiked ? 1 : 0.4}`}
 				/>
-				<span class="flex flex-grow">{millify(likes, { precision: 2 })}</span>
-			</button>
+				<span class="ml-1.5 flex flex-grow">{millify(likes, { precision: 2 })}</span>
+			</div>
 		</div>
 	</div>
 </article>
 
 <style>
-	article {
-		--shadow-color: 43deg 17% 71%;
-		box-shadow: 0.2px 0.5px 0.7px hsl(var(--shadow-color) / 0.17),
-			0.4px 0.9px 1.3px -0.6px hsl(var(--shadow-color) / 0.29),
-			0.9px 2px 2.9px -1.2px hsl(var(--shadow-color) / 0.4);
-	}
-
-	h1 {
-		@apply mt-1.5 text-3xl font-extrabold leading-tight tracking-tight text-black;
-	}
-
 	p {
 		@apply mt-5 leading-relaxed text-dune-900;
 	}

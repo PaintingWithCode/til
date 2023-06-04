@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	@apply antialiased;
+	@apply bg-raffia-100 antialiased;
 	text-rendering: optimizeLegibility;
 	background: hsl(42deg 57% 92%);
 }

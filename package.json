@@ -35,6 +35,7 @@
 	"type": "module",
 	"dependencies": {
 		"microns": "^1.1.3",
-		"millify": "^6.1.0"
+		"millify": "^6.1.0",
+		"svelte-action-balancer": "^1.0.4"
 	}
 }
