@@ -40,7 +40,7 @@ export default {
 			fontFamily: {
 				mono: ['Iosevka', defaultTheme.fontFamily.mono],
 				sans: ['Inter Variable', defaultTheme.fontFamily.sans],
-				display: ['Inter Tight Variable', defaultTheme.fontFamily.sans],
+				display: ['Inter Tight', defaultTheme.fontFamily.sans],
 			},
 		},
 	},
