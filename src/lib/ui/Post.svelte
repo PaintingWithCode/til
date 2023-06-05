@@ -32,14 +32,16 @@
 		<time class="font-mono font-semibold text-dune-600" datetime={date}>
 			{date.replaceAll('-', '/')}
 		</time>
-		<a href={`/post/${slug}`}>
-			<h1
-				use:balancer={{ enabled: true, ratio: 0.55 }}
-				class="mt-1.5 font-display text-3xl font-extrabold leading-tight text-black underline decoration-desert-storm transition-colors hover:decoration-dune-800"
+		<h1
+			use:balancer={{ enabled: true, ratio: 0.55 }}
+			class="mt-1.5 font-display text-3xl font-extrabold leading-tight text-black"
+		>
+			<a
+				href={`/post/${slug}`}
+				class="underline decoration-desert-storm transition-colors hover:decoration-dune-800"
+				>{title}</a
 			>
-				{title}
-			</h1>
-		</a>
+		</h1>
 		<svelte:component this={content} />
 	</div>
 	<div
@@ -79,16 +81,21 @@
 	</div>
 </article>
 
-<style>
-	:global(article p) {
+<style global>
+	article p {
 		@apply mt-5 leading-relaxed text-dune-900;
 	}
 
-	:global(article p code) {
-		@apply bg-[#232137] px-1.5 py-0.5 font-medium text-[#F6C177];
+	article p code {
+		@apply rounded-sm bg-[#232137] px-1.5 py-0.5 font-medium text-[#232137];
+		--tw-bg-opacity: 0.15;
 	}
 
-	:global(article pre) {
-		@apply my-2.5 px-5 py-3.5 font-medium;
+	article pre {
+		@apply my-2.5 rounded-sm px-5 py-3.5 font-medium;
+	}
+
+	article pre *::selection {
+		background-color: hsla(0, 0%, 100%, 0.15) !important;
 	}
 </style>

@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import preprocess from 'svelte-preprocess';
 
 import { mdsvex, escapeSvelte } from 'mdsvex';
 import shiki from 'shiki';
@@ -19,7 +19,7 @@ const mdsvexOptions = {
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	extensions: ['.svelte', '.md'],
-	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	preprocess: [preprocess(), mdsvex(mdsvexOptions)],
 	kit: {
 		adapter: adapter(),
 	},
