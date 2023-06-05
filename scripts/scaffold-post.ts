@@ -6,7 +6,7 @@ import slugify from 'slugify';
 const template = handlebars.compile(fs.readFileSync(__dirname + '/template.hbs').toString('utf-8'));
 
 async function main() {
-	p.intro(`Scaffold new TIL post`);
+	p.intro(`Scaffold new post`);
 	const post = await p.group(
 		{
 			title: () =>
@@ -31,7 +31,7 @@ async function main() {
 						if (value.length === 0) return `A topic is required!`;
 					},
 				}),
-			tags: () => p.text({ message: 'Tags (comma separated)' }),
+			tags: () => p.text({ message: 'Additional Tags (comma separated)' }),
 		},
 		{
 			onCancel: () => {
