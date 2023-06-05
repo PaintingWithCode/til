@@ -7,7 +7,7 @@
 	<title>PaintingWithCode • Today I Learned</title>
 </svelte:head>
 
-<div class="flex flex-col space-y-8 py-8">
+<div class="flex flex-col space-y-8 pb-12 pt-8">
 	{#each data.posts as post}
 		<Post {post} />
 	{/each}

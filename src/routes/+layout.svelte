@@ -13,12 +13,15 @@
 		currentTarget: EventTarget & HTMLDivElement;
 	};
 
-	function onContainerScroll(event: ScrollEvent) {
-		const newScrollY = event.currentTarget.scrollTop;
+	const SCROLL_THRESHOLD = 10;
 
-		if (newScrollY === 0 || newScrollY < scrollY) {
+	function onContainerScroll(event: ScrollEvent) {
+		const container = event.currentTarget;
+		const newScrollY = container.scrollTop;
+
+		if (newScrollY === 0 || newScrollY < scrollY - SCROLL_THRESHOLD) {
 			showFooter = true;
-		} else {
+		} else if (newScrollY > scrollY && newScrollY >= SCROLL_THRESHOLD) {
 			showFooter = false;
 		}
 
@@ -26,7 +29,7 @@
 	}
 </script>
 
-<div class="min-w-screen h-screen overflow-y-scroll" on:scroll={onContainerScroll}>
+<div class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
 	<Header />
 	<main class="z-10 mx-auto min-h-[calc(100vh-6.5rem)] max-w-2xl selection:bg-supernova/50">
 		<slot />

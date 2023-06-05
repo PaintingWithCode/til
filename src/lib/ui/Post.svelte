@@ -54,7 +54,7 @@
 		</div>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
 			<a
-				href="/post/why-montreal-bagels-are-better"
+				href={`/post/${slug}`}
 				class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
 				>PERMALINK</a
 			>
@@ -82,5 +82,13 @@
 <style>
 	:global(article p) {
 		@apply mt-5 leading-relaxed text-dune-900;
+	}
+
+	:global(article p code) {
+		@apply bg-[#232137] px-1.5 py-0.5 font-medium text-[#F6C177];
+	}
+
+	:global(article pre) {
+		@apply my-2.5 px-5 py-3.5 font-medium;
 	}
 </style>
