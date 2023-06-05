@@ -1,9 +1,12 @@
 <script lang="ts">
-	import type { Post as PostType } from '$lib/core/posts';
 	import { Post } from '$lib/ui';
 
-	export let data: PostType;
+	export let data;
 </script>
+
+<svelte:head>
+	<title>{data.metadata.title} • Today I Learned</title>
+</svelte:head>
 
 <div class="py-8">
 	<Post post={data} />

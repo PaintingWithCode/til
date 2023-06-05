@@ -15,21 +15,20 @@ export type Post = {
 };
 
 export async function listPosts(pageNumber = 1) {
-	const glob_import = import.meta.glob<Post>('../../posts/*/*.md', {
-		eager: true,
-	});
-
 	const [startIndex, endIndex] = getSliceRange(pageNumber);
 
-	const posts = Object.entries(glob_import)
-		.map(([path, post]) => ({
-			...post,
-			metadata: {
-				...post.metadata,
-				slug: getSlugFromPath(path),
-			},
-		}))
+	const posts = getAllPostFiles()
 		.filter((post) => post.metadata.isPublished)
+		.slice(startIndex, endIndex);
+
+	return posts;
+}
+
+export async function listPostsByTopic(topic: string, pageNumber = 1) {
+	const [startIndex, endIndex] = getSliceRange(pageNumber);
+
+	const posts = getAllPostFiles()
+		.filter((post) => post.metadata.isPublished && post.metadata.topic === topic)
 		.slice(startIndex, endIndex);
 
 	return posts;
@@ -45,13 +44,13 @@ export async function getPost(slug: string) {
 				...post.metadata,
 				slug,
 			},
-		};
+		} as Post;
 	} else {
 		throw new Error('Post not published');
 	}
 }
 
-export function getAllSlugs() {
+export function listAllSlugs() {
 	const glob_import = import.meta.glob<Post>('../../posts/*/*.md', {
 		eager: true,
 	});
@@ -59,6 +58,20 @@ export function getAllSlugs() {
 	return Object.entries(glob_import)
 		.map(([path, post]) => (post.metadata.isPublished ? { slug: getSlugFromPath(path) } : null))
 		.filter((s): s is { slug: string } => s !== null);
+}
+
+function getAllPostFiles() {
+	const glob_import = import.meta.glob<Post>('../../posts/*/*.md', {
+		eager: true,
+	});
+
+	return Object.entries(glob_import).map(([path, post]) => ({
+		...post,
+		metadata: {
+			...post.metadata,
+			slug: getSlugFromPath(path),
+		},
+	}));
 }
 
 function getSlugFromPath(path: string) {

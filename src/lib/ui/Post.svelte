@@ -47,7 +47,7 @@
 	>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
 			<a
-				href="/"
+				href={`/topic/${topic}`}
 				class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
 				>#{topic}</a
 			>

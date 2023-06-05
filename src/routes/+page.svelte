@@ -1,5 +1,6 @@
-<script>
+<script lang="ts">
 	import { Post } from '$lib/ui';
+
 	export let data;
 </script>
 
