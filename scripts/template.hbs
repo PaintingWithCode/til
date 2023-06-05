@@ -1,0 +1,12 @@
+---
+  title: {{title}}
+  date: '{{date}}'
+  topic: {{topic}}
+  {{#if tags}}
+  tags: 
+    {{#each tags}}
+    - {{this}}
+    {{/each}}
+  {{/if}}
+  isPublished: false
+---
