@@ -1,7 +1,10 @@
-<script>
+<script lang="ts">
+	import type { Post as PostType } from '$lib/core/posts';
 	import { Post } from '$lib/ui';
+
+	export let data: PostType;
 </script>
 
 <div class="py-8">
-	<Post />
+	<Post post={data} />
 </div>

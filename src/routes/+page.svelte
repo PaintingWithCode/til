@@ -1,5 +1,6 @@
 <script>
 	import { Post } from '$lib/ui';
+	export let data;
 </script>
 
 <svelte:head>
@@ -7,7 +8,7 @@
 </svelte:head>
 
 <div class="flex flex-col space-y-8 py-8">
-	{#each Array(5) as _}
-		<Post />
+	{#each data.posts as post}
+		<Post {post} />
 	{/each}
 </div>
