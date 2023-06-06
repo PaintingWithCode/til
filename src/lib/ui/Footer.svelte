@@ -10,7 +10,7 @@
 			&copy; {new Date().getFullYear()}
 			<a
 				href="https://aravindmurali.com"
-				class="font-semibold decoration-2 underline-offset-4 hover:underline"
+				class="font-semibold decoration-supernova decoration-2 underline-offset-4 hover:underline"
 				target="_blank"
 				rel="noreferrer"
 				aria-label="PaintingWithCode">PaintingWithCode</a
@@ -18,7 +18,7 @@
 		</div>
 		<a
 			href="https://github.com/PaintingWithCode/til"
-			class="font-mono font-medium underline-offset-4 hover:underline"
+			class="font-mono font-medium decoration-supernova decoration-2 underline-offset-4 hover:underline"
 			target="_blank"
 			rel="noreferrer"
 			aria-label="View source on GitHub"

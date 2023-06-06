@@ -86,6 +86,14 @@
 		@apply mt-5 leading-relaxed text-dune-900;
 	}
 
+	article p a {
+		@apply underline decoration-dune-600 decoration-2 underline-offset-4 transition-colors;
+	}
+
+	article p a:hover {
+		@apply decoration-supernova;
+	}
+
 	article p code {
 		@apply rounded-sm bg-[#232137] px-1.5 py-0.5 font-medium text-[#232137];
 		--tw-bg-opacity: 0.15;

@@ -4,7 +4,7 @@
   topic: go
   isPublished: true
 ---
-Create a new file named `hello.go` and add the following Go code:
+[Download](https://go.dev/dl/) and install go and create a new file named `hello.go` and add the following Go code:
 
 ```go showLineNumbers
 package main
@@ -16,12 +16,12 @@ func main() {
 }
 ```
 
-To run the code, you can use `go run`
+To run the code, you can use `go run`:
 ```shell
 go run hello-world.go
 ```
 
-Sometimes we’ll want to build our programs into binaries. We can do this using `go build`
+Sometimes we’ll want to build our programs into binaries. We can do this using `go build`:
 ```shell
 go build hello-world.go
 ```
