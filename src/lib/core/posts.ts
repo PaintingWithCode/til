@@ -19,6 +19,10 @@ export async function listPosts(pageNumber = 1) {
 
 	const posts = getAllPostFiles()
 		.filter((post) => post.metadata.isPublished)
+		.sort(
+			(first, second) =>
+				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
+		)
 		.slice(startIndex, endIndex);
 
 	return posts;
@@ -29,6 +33,10 @@ export async function listPostsByTopic(topic: string, pageNumber = 1) {
 
 	const posts = getAllPostFiles()
 		.filter((post) => post.metadata.isPublished && post.metadata.topic === topic)
+		.sort(
+			(first, second) =>
+				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
+		)
 		.slice(startIndex, endIndex);
 
 	return posts;

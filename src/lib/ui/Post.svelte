@@ -91,8 +91,12 @@
 		--tw-bg-opacity: 0.15;
 	}
 
+	article .lang {
+		@apply mt-2.5 select-none rounded-t-sm bg-[#232137] px-4 pt-3 font-mono text-sm font-semibold leading-none text-white/60;
+	}
+
 	article pre {
-		@apply my-2.5 rounded-sm px-4 py-3.5 font-medium;
+		@apply mb-2.5 rounded-b-sm p-4 pt-2.5 font-medium;
 	}
 
 	article pre *::selection {

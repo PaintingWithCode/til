@@ -4,6 +4,8 @@
 	import '@fontsource/inter-tight/latin-800.css';
 	import '../app.css';
 
+	import { afterNavigate } from '$app/navigation';
+
 	import { Header, Footer } from '$lib/ui';
 
 	let scrollY = 0;
@@ -27,9 +29,13 @@
 
 		scrollY = newScrollY;
 	}
+
+	afterNavigate(() => {
+		document.getElementById('page')?.scrollTo(0, 0);
+	});
 </script>
 
-<div class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
+<div id="page" class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
 	<Header />
 	<main class="z-10 mx-auto min-h-[calc(100vh-6.5rem)] max-w-2xl selection:bg-supernova/50">
 		<slot />

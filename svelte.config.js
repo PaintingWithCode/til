@@ -19,7 +19,7 @@ const mdsvexOptions = {
 				bg: highlighter.getBackgroundColor('rose-pine-moon'),
 				elements: {
 					pre({ className, style, children }) {
-						return `<pre tabindex="0" class="${className}" style="${style}">${children}</pre>`;
+						return `<div class='lang'>${lang}</div><pre tabindex="0" class="${className}" style="${style}">${children}</pre>`;
 					},
 					// customize line to add line number
 					line({ className, index, children }) {
