@@ -8,10 +8,29 @@ import shiki from 'shiki';
 const mdsvexOptions = {
 	extensions: ['.md'],
 	highlight: {
-		highlighter: async (code, lang = 'text') => {
+		highlighter: async (code, lang = 'text', meta) => {
+			const showLineNumbers = meta?.includes('showLineNumbers') ?? false;
+
 			const highlighter = await shiki.getHighlighter({ theme: 'rose-pine-moon' });
-			const html = escapeSvelte(highlighter.codeToHtml(code, { lang }));
-			return `{@html \`${html}\` }`;
+			const tokens = highlighter.codeToThemedTokens(code, lang);
+
+			const html = shiki.renderToHtml(tokens, {
+				fg: highlighter.getForegroundColor('rose-pine-moon'),
+				bg: highlighter.getBackgroundColor('rose-pine-moon'),
+				elements: {
+					pre({ className, style, children }) {
+						return `<pre tabindex="0" class="${className}" style="${style}">${children}</pre>`;
+					},
+					// customize line to add line number
+					line({ className, index, children }) {
+						return `<span class="${className}">${
+							showLineNumbers ? `<span class="line-number">${index + 1}</span>` : ''
+						}${children}</span>`;
+					},
+				},
+			});
+
+			return `{@html \`${escapeSvelte(html)}\` }`;
 		},
 	},
 };

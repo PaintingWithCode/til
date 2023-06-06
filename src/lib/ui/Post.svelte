@@ -92,10 +92,16 @@
 	}
 
 	article pre {
-		@apply my-2.5 rounded-sm px-5 py-3.5 font-medium;
+		@apply my-2.5 rounded-sm px-4 py-3.5 font-medium;
 	}
 
 	article pre *::selection {
 		background-color: hsla(0, 0%, 100%, 0.15) !important;
+	}
+
+	article code .line-number {
+		@apply mr-4 inline-block w-3.5 select-none text-right text-white/30;
+		font-feature-settings: 'tnum';
+		font-variant-numeric: tabular-nums;
 	}
 </style>

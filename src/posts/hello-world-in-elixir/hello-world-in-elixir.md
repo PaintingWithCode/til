@@ -7,7 +7,7 @@
 
 Create a new file named `hello.ex` and add the following Elixir code:
 
-```elixir
+```elixir showLineNumbers
 defmodule HelloWorld do
   def hello do
     IO.puts("Hello, World!")
