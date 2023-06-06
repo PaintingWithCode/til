@@ -2,11 +2,7 @@
 	import { slide } from 'svelte/transition';
 </script>
 
-<footer
-	class="sticky bottom-0 z-20 h-10 w-full bg-raffia-100"
-	in:slide={{ duration: 400 }}
-	out:slide={{ duration: 300 }}
->
+<footer class="sticky bottom-0 z-20 h-10 w-full bg-raffia-100" transition:slide>
 	<div
 		class="absolute left-0 right-0 top-0 flex h-10 items-center justify-between border-t border-dune-800 border-dune-800/80 px-8 text-sm"
 	>
