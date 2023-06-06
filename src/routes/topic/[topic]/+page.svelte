@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { Post } from '$lib/ui';
+	import { Post } from '$lib/components';
 
 	export let data;
 
@@ -15,8 +15,8 @@
 </svelte:head>
 
 <div class="flex flex-col space-y-8 pb-12 pt-8">
-	<h2 class="-mb-2 font-mono text-lg font-bold uppercase leading-none text-black">
-		Topics / {topic}
+	<h2 class="-mb-2 font-mono text-lg font-bold uppercase leading-none text-dune-700">
+		Topics / <span class="text-dune-900">{topic}</span>
 	</h2>
 	{#each data.posts as post}
 		<Post {post} />

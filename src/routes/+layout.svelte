@@ -6,7 +6,7 @@
 
 	import { afterNavigate } from '$app/navigation';
 
-	import { Header, Footer } from '$lib/ui';
+	import { Header, Footer } from '$lib/components';
 
 	let scrollY = 0;
 	let showFooter = true;

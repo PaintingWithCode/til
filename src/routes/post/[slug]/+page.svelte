@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Post } from '$lib/ui';
+	import { Post } from '$lib/components';
 
 	export let data;
 </script>

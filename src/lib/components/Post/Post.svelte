@@ -1,4 +1,6 @@
 <script lang="ts">
+	import './styles.css';
+
 	import type { SvelteComponentTyped } from 'svelte';
 	import { balancer } from 'svelte-action-balancer';
 	import { millify } from 'millify';
@@ -27,7 +29,7 @@
 	}
 </script>
 
-<article class="z-10 border border-dune-800/80 bg-desert-storm">
+<article class="z-10 rounded-sm border border-dune-800/80 bg-desert-storm">
 	<div class="px-10 py-8">
 		<time class="font-mono font-semibold text-dune-600" datetime={date}>
 			{date.replaceAll('-', '/')}
@@ -80,40 +82,3 @@
 		</div>
 	</div>
 </article>
-
-<style global>
-	article p {
-		@apply mt-5 leading-relaxed text-dune-900;
-	}
-
-	article p a {
-		@apply underline decoration-dune-600 decoration-2 underline-offset-4 transition-colors;
-	}
-
-	article p a:hover {
-		@apply decoration-supernova;
-	}
-
-	article p code {
-		@apply rounded-sm bg-[#232137] px-1.5 py-0.5 font-medium text-[#232137];
-		--tw-bg-opacity: 0.15;
-	}
-
-	article .lang {
-		@apply mt-2.5 select-none rounded-t-sm bg-[#232137] px-4 pt-3 font-mono text-sm font-semibold leading-none text-white/60;
-	}
-
-	article pre {
-		@apply mb-2.5 rounded-b-sm p-4 pt-2.5 font-medium;
-	}
-
-	article pre *::selection {
-		background-color: hsla(0, 0%, 100%, 0.15) !important;
-	}
-
-	article code .line-number {
-		@apply mr-4 inline-block w-3.5 select-none text-right text-white/30;
-		font-feature-settings: 'tnum';
-		font-variant-numeric: tabular-nums;
-	}
-</style>

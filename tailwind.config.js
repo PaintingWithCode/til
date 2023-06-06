@@ -42,6 +42,9 @@ export default {
 				sans: ['Inter Variable', defaultTheme.fontFamily.sans],
 				display: ['Inter Tight', defaultTheme.fontFamily.sans],
 			},
+			padding: {
+				6.5: '1.625rem', // 26px
+			},
 		},
 	},
 	plugins: [],
