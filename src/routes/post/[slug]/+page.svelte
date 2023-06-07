@@ -9,5 +9,5 @@
 </svelte:head>
 
 <div class="py-8">
-	<Post post={data} />
+	<Post post={data} showCopyLink />
 </div>

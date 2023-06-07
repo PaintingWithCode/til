@@ -91,5 +91,5 @@ article ul {
 
 article ol li,
 article ul li {
-	@apply pl-1 leading-relaxed;
+	@apply mt-0.5 pl-1 leading-relaxed;
 }

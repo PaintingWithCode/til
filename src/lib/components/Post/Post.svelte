@@ -4,9 +4,12 @@
 	import type { SvelteComponentTyped } from 'svelte';
 	import { balancer } from 'svelte-action-balancer';
 	import { millify } from 'millify';
+
+	import { page } from '$app/stores';
 	import type { Post } from '$lib/core/posts';
 
 	export let post: Post;
+	export let showCopyLink = false;
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	type C = typeof SvelteComponentTyped<any, any, any>;
@@ -14,6 +17,7 @@
 
 	const { date, title, slug, topic } = post.metadata;
 
+	let copyText = 'COPY LINK';
 	let views = 123;
 	let hasBeenLiked = false;
 	let likes = 99;
@@ -26,6 +30,15 @@
 			likes += 1;
 			hasBeenLiked = true;
 		}
+	}
+
+	function onCopyClick() {
+		navigator.clipboard.writeText($page.url.href);
+		copyText = 'COPIED';
+
+		setTimeout(() => {
+			copyText = 'COPY LINK';
+		}, 800);
 	}
 </script>
 
@@ -57,11 +70,17 @@
 			>
 		</div>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
-			<a
-				href={`/post/${slug}`}
-				class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
-				>PERMALINK</a
-			>
+			{#if showCopyLink}
+				<button type="button" aria-label="Copy Link" on:click={() => onCopyClick()}
+					>{copyText}</button
+				>
+			{:else}
+				<a
+					href={`/post/${slug}`}
+					class="underline decoration-desert-storm decoration-2 underline-offset-4 transition-colors hover:decoration-dune-800"
+					>PERMALINK</a
+				>
+			{/if}
 		</div>
 		<div
 			class="flex basis-1/3 items-center justify-center space-x-4 py-3 pl-6 pr-4 font-medium text-dune-900"
@@ -74,6 +93,7 @@
 				<button
 					type="button"
 					on:click={onLikeClick}
+					aria-label={hasBeenLiked ? 'Unlike' : 'Like'}
 					class="mu mu-heart text-2xl leading-none text-red-600 transition-opacity"
 					style={`opacity: ${hasBeenLiked ? 1 : 0.4}`}
 				/>
