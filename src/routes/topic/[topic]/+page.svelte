@@ -15,7 +15,7 @@
 </svelte:head>
 
 <div class="flex flex-col space-y-8 pb-12 pt-8">
-	<h2 class="-mb-2 font-mono text-lg font-bold uppercase leading-none text-dune-700">
+	<h2 class="-mb-2 font-mono text-lg font-bold uppercase leading-none text-dune-900/60">
 		Topics / <span class="text-dune-900">{topic}</span>
 	</h2>
 	{#each data.posts as post}
