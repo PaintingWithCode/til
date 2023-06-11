@@ -1,11 +1,12 @@
 import type { SvelteComponent } from 'svelte';
 
 type PostMetadata = {
+	id: string;
 	title: string;
 	date: string;
 	topic: string;
 	slug: string;
-	tags: string[];
+	tags?: string[];
 	isPublished: boolean;
 };
 
@@ -13,6 +14,8 @@ export type Post = {
 	default: SvelteComponent;
 	metadata: PostMetadata;
 };
+
+const POSTS_PER_PAGE = 10;
 
 export async function listPosts(pageNumber = 1) {
 	const [startIndex, endIndex] = getSliceRange(pageNumber);
@@ -22,10 +25,13 @@ export async function listPosts(pageNumber = 1) {
 		.sort(
 			(first, second) =>
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
-		)
-		.slice(startIndex, endIndex);
+		);
 
-	return posts;
+	const postsForPage = posts.slice(startIndex, endIndex);
+	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
+	const hasNextPage = posts.length > endIndex;
+
+	return { posts: postsForPage, hasNextPage, hasPreviousPage };
 }
 
 export async function listPostsByTopic(topic: string, pageNumber = 1) {
@@ -36,10 +42,13 @@ export async function listPostsByTopic(topic: string, pageNumber = 1) {
 		.sort(
 			(first, second) =>
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
-		)
-		.slice(startIndex, endIndex);
+		);
 
-	return posts;
+	const postsForPage = posts.slice(startIndex, endIndex);
+	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
+	const hasNextPage = posts.length > endIndex;
+
+	return { posts: postsForPage, hasNextPage, hasPreviousPage };
 }
 
 export async function getPost(slug: string) {
@@ -87,12 +96,11 @@ function getSlugFromPath(path: string) {
 }
 
 function getSliceRange(pageNumber: number) {
-	const postsPerPage = 10;
 	if (pageNumber === 1) {
-		return [0, postsPerPage - 1];
+		return [0, POSTS_PER_PAGE];
 	} else {
-		const startIndex = (pageNumber - 1) * postsPerPage;
-		const endIndex = startIndex + postsPerPage - 1;
+		const startIndex = (pageNumber - 1) * POSTS_PER_PAGE;
+		const endIndex = startIndex + POSTS_PER_PAGE - 1;
 		return [startIndex, endIndex];
 	}
 }

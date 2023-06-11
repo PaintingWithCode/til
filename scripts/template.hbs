@@ -1,12 +1,13 @@
 ---
-  title: {{title}}
-  date: '{{date}}'
-  topic: {{topic}}
-  {{#if tags}}
-  additionalTags: 
-    {{#each tags}}
-    - '{{this}}'
-    {{/each}}
-  {{/if}}
-  isPublished: false
+id: {{nanoid}}
+title: {{title}}
+date: '{{date}}'
+topic: {{topic}}
+{{#if tags}}
+additionalTags: 
+  {{#each tags}}
+  - '{{this}}'
+  {{/each}}
+{{/if}}
+isPublished: false
 ---

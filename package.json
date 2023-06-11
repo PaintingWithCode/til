@@ -26,6 +26,7 @@
 		"handlebars": "^4.7.7",
 		"jiti": "^1.18.2",
 		"mdsvex": "^0.10.6",
+		"nanoid": "^4.0.2",
 		"postcss": "^8.4.24",
 		"prettier": "^2.8.8",
 		"prettier-plugin-svelte": "^2.10.1",

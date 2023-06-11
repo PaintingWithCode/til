@@ -1,8 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { listAllSlugs, getPost } from '$lib/core/posts';
 
-export const prerender = true;
-
 export async function entries() {
 	const slugs = await listAllSlugs();
 	return slugs;

@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Post } from '$lib/components';
+	import { Post, Pagination } from '$lib/components';
 
 	export let data;
+	const { hasNextPage, hasPreviousPage, posts } = data;
 </script>
 
-<svelte:head>
-	<title>PaintingWithCode • Today I Learned</title>
-</svelte:head>
-
-<div class="flex flex-col space-y-8 pb-12 pt-8">
-	{#each data.posts as post}
+<div class="flex flex-col space-y-8 py-10">
+	{#each posts as post}
 		<Post {post} />
 	{/each}
+	{#if hasPreviousPage || hasNextPage}
+		<Pagination {hasNextPage} {hasPreviousPage} />
+	{/if}
 </div>

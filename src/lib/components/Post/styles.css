@@ -1,5 +1,9 @@
+article h1 + * {
+	@apply mt-5;
+}
+
 article p {
-	@apply mt-5 leading-relaxed text-dune-900;
+	@apply mt-5 leading-relaxed text-dune-800;
 }
 
 article p a {
@@ -81,7 +85,7 @@ article ul {
 
 article ol > li::marker,
 article ul > li::marker {
-	@apply font-normal text-dune-900;
+	@apply font-normal text-dune-800;
 }
 
 article ol,
@@ -91,5 +95,5 @@ article ul {
 
 article ol li,
 article ul li {
-	@apply mt-0.5 pl-1 leading-relaxed;
+	@apply mt-0.5 pl-1 leading-relaxed text-dune-800;
 }

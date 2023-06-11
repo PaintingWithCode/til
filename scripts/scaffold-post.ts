@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import * as p from '@clack/prompts';
-import handlebars from 'handlebars';
 import slugify from 'slugify';
+import { customAlphabet } from 'nanoid';
+import handlebars from 'handlebars';
 
 const template = handlebars.compile(fs.readFileSync(__dirname + '/template.hbs').toString('utf-8'));
 
@@ -54,6 +55,7 @@ function createPost(post) {
 		parsedTags = tags.split(',');
 	}
 
+	const nanoid = customAlphabet('256789bcdfghjkmnpqrstvwyzBCDFGHJKLMNPQRSTVWYZ', 8);
 	const date = new Date().toISOString().split('T')[0];
 
 	const dirPath = `src/posts/${slug}`;
@@ -61,7 +63,7 @@ function createPost(post) {
 
 	fs.mkdirSync(dirPath);
 
-	fs.writeFileSync(filePath, template({ ...post, date, tags: parsedTags }));
+	fs.writeFileSync(filePath, template({ ...post, nanoid, date, tags: parsedTags }));
 
 	return filePath;
 }

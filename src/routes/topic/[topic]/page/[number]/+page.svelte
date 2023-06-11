@@ -9,5 +9,11 @@
 	<Post {post} />
 {/each}
 {#if hasPreviousPage || hasNextPage}
-	<Pagination {hasNextPage} {hasPreviousPage} linkPrefix={`/topic/${topic}/page/`} />
+	<Pagination
+		{hasNextPage}
+		{hasPreviousPage}
+		linkPrefix={`/topic/${topic}/page/`}
+		firstPageLink={`/topic/${topic}`}
+		currentPage={2}
+	/>
 {/if}

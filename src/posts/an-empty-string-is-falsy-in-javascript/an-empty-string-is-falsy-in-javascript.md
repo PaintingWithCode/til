@@ -1,8 +1,9 @@
 ---
-  title: An empty string is falsy in JavaScript
-  date: '2023-06-06'
-  topic: javascript
-  isPublished: true
+nanoid: qRRqPxxD
+title: An empty string is falsy in JavaScript
+date: '2023-06-06'
+topic: javascript
+isPublished: true
 ---
 
 Instead of using `aString.length > 0` to verify if a string has a valid value, you can use the string as the conditional itself. 

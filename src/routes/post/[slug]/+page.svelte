@@ -8,6 +8,6 @@
 	<title>{data.metadata.title} • Today I Learned</title>
 </svelte:head>
 
-<div class="py-8">
+<div class="py-10">
 	<Post post={data} showCopyLink />
 </div>
