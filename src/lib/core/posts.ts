@@ -17,23 +17,18 @@ export type Post = {
 
 const POSTS_PER_PAGE = 10;
 
-export async function listPosts(pageNumber = 1) {
-	const posts = getAllPostFiles()
-		.filter((post) => post.metadata.isPublished)
-		.sort(
-			(first, second) =>
-				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
-		);
-
-	const [startIndex, endIndex] = getSliceRange(pageNumber);
-	return parsePageFromPosts(posts, startIndex, endIndex);
-}
-
-export async function listPostsByTopic(topic: string, pageNumber = 1) {
+export function listPosts(pageNumber = 1, topic?: string) {
 	const [startIndex, endIndex] = getSliceRange(pageNumber);
 
 	const posts = getAllPostFiles()
-		.filter((post) => post.metadata.isPublished && post.metadata.topic === topic)
+		.map(([path, post]) => ({
+			...post,
+			metadata: {
+				...post.metadata,
+				slug: getSlugFromPath(path),
+			},
+		}))
+		.filter((post) => post.metadata.isPublished && (!topic || post.metadata.topic === topic))
 		.sort(
 			(first, second) =>
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
@@ -59,13 +54,21 @@ export async function getPost(slug: string) {
 }
 
 export function listAllSlugs() {
-	const glob_import = import.meta.glob<Post>('../../posts/*/*.md', {
-		eager: true,
-	});
-
-	return Object.entries(glob_import)
+	return getAllPostFiles()
 		.map(([path, post]) => (post.metadata.isPublished ? { slug: getSlugFromPath(path) } : null))
 		.filter((s): s is { slug: string } => s !== null);
+}
+
+export function listAllTopics() {
+	return getAllPostFiles()
+		.filter(([, post]) => post.metadata.isPublished)
+		.reduce((topics: Array<{ topic: string }>, [, post]) => {
+			const topic = post.metadata.topic;
+			if (!topics.includes({ topic })) {
+				topics.push({ topic });
+			}
+			return topics;
+		}, []);
 }
 
 function getAllPostFiles() {
@@ -73,13 +76,7 @@ function getAllPostFiles() {
 		eager: true,
 	});
 
-	return Object.entries(glob_import).map(([path, post]) => ({
-		...post,
-		metadata: {
-			...post.metadata,
-			slug: getSlugFromPath(path),
-		},
-	}));
+	return Object.entries(glob_import);
 }
 
 function parsePageFromPosts(posts: Post[], startIndex: number, endIndex: number) {

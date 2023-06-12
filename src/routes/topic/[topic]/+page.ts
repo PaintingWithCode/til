@@ -1,8 +1,18 @@
-import { listPostsByTopic } from '$lib/core/posts';
+import { error } from '@sveltejs/kit';
+import { listAllTopics, listPosts } from '$lib/core/posts';
+
+export async function entries() {
+	const topics = listAllTopics();
+	return topics;
+}
 
 export async function load({ params }) {
 	const topic = params.topic;
-	const data = await listPostsByTopic(params.topic);
+	const data = listPosts(1, params.topic);
+
+	if (!data.posts.length) {
+		throw error(404, { message: 'No such topic' });
+	}
 
 	const topicTitle = topic.charAt(0).toUpperCase() + topic.slice(1);
 

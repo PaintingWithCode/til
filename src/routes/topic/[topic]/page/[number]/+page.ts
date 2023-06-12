@@ -1,9 +1,16 @@
-import { listPostsByTopic } from '$lib/core/posts';
+import { error } from '@sveltejs/kit';
+import { listPosts } from '$lib/core/posts';
 
-export async function load({ params }) {
+export const prerender = 'auto';
+
+export function load({ params }) {
 	const topic = params.topic;
 	const pageNumber = Number(params.number);
-	const data = await listPostsByTopic(topic, pageNumber);
+	const data = listPosts(pageNumber, topic);
+
+	if (!data.posts.length) {
+		throw error(404);
+	}
 
 	const topicTitle = topic.charAt(0).toUpperCase() + topic.slice(1);
 
