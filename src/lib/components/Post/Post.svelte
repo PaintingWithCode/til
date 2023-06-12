@@ -3,10 +3,10 @@
 
 	import type { SvelteComponentTyped } from 'svelte';
 	import { balancer } from 'svelte-action-balancer';
-	import { millify } from 'millify';
 
 	import { page } from '$app/stores';
 	import type { Post } from '$lib/core/posts';
+	import PostStats from './PostStats.svelte';
 
 	export let post: Post;
 	export let showCopyLink = false;
@@ -15,22 +15,9 @@
 	type C = typeof SvelteComponentTyped<any, any, any>;
 	$: content = post.default as unknown as C;
 
-	const { date, title, slug, topic } = post.metadata;
+	const { id, date, title, slug, topic } = post.metadata;
 
 	let copyText = 'COPY LINK';
-	let views = 123;
-	let hasBeenLiked = false;
-	let likes = 99;
-
-	function onLikeClick() {
-		if (hasBeenLiked) {
-			likes -= 1;
-			hasBeenLiked = false;
-		} else {
-			likes += 1;
-			hasBeenLiked = true;
-		}
-	}
 
 	function onCopyClick() {
 		navigator.clipboard.writeText($page.url.href);
@@ -53,7 +40,7 @@
 		>
 			<a
 				href={`/post/${slug}`}
-				class="underline decoration-desert-storm transition-colors hover:decoration-dune-800"
+				class="underline decoration-desert-storm decoration-3 underline-offset-1.5 transition-colors hover:decoration-dune-800"
 				>{title}</a
 			>
 		</h1>
@@ -85,20 +72,7 @@
 		<div
 			class="flex basis-1/3 items-center justify-center space-x-4 py-3 pl-6 pr-4 font-medium text-dune-900"
 		>
-			<div class="flex basis-1/2 items-center justify-center leading-none">
-				<i class="mu mu-show mr-1.5 text-2xl leading-none" />
-				{millify(views, { precision: 2 })}
-			</div>
-			<div class="flex basis-1/2 items-center justify-center leading-none">
-				<button
-					type="button"
-					on:click={onLikeClick}
-					aria-label={hasBeenLiked ? 'Unlike' : 'Like'}
-					class="mu mu-heart text-2xl leading-none text-red-600 transition-opacity"
-					style={`opacity: ${hasBeenLiked ? 1 : 0.4}`}
-				/>
-				<span class="ml-1.5 flex flex-grow">{millify(likes, { precision: 2 })}</span>
-			</div>
+			<PostStats postId={id} />
 		</div>
 	</div>
 </article>

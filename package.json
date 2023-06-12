@@ -46,6 +46,7 @@
 		"@fontsource-variable/inter": "^5.0.2",
 		"@fontsource/inter": "^5.0.2",
 		"@fontsource/inter-tight": "^5.0.2",
+		"dayjs": "^1.11.8",
 		"microns": "^1.1.3",
 		"millify": "^6.1.0",
 		"shiki": "^0.14.2",

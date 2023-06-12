@@ -45,6 +45,12 @@ export default {
 			padding: {
 				6.5: '1.625rem', // 26px
 			},
+			textDecorationThickness: {
+				3: '3px',
+			},
+			textUnderlineOffset: {
+				1.5: '1.5px',
+			},
 		},
 	},
 	plugins: [],
