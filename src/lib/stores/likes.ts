@@ -1,29 +1,38 @@
 import dayjs from 'dayjs';
+import { writable } from 'svelte/store';
 
-// Checks if a post with the given id has been viewed by retrieving
-// from localStorage and comparing its expiry with the current time.
-export function hasBeenViewed(id: string) {
-	const lsValue = localStorage.getItem(`v:${id}`);
+type LikesStore = {
+	count: number;
+	isLiked: boolean;
+};
 
-	if (lsValue) {
-		const expiryDate = dayjs(Number(lsValue) * 1000);
-		const hasExpired = dayjs().isAfter(expiryDate);
-		return !hasExpired;
-	} else return false;
-}
+function createLikesStore(postId: string) {
+	const { subscribe, set, update } = writable<LikesStore>();
 
-// Saves a post with the given id as viewed in localStorage
-// with an expiry of 1 day.
-export function saveAsViewed(id: string) {
-	const expiry = dayjs().add(1, 'day').unix().toString();
-	localStorage.setItem(`v:${id}`, expiry);
+	return {
+		subscribe,
+		init() {
+			set({
+				count: 99,
+				isLiked: hasBeenLiked(postId),
+			});
+		},
+		likePost() {
+			saveAsLiked(postId);
+			update((current) => ({ isLiked: true, count: current.count + 1 }));
+		},
+		unlikePost() {
+			removeLike(postId);
+			update((current) => ({ isLiked: false, count: current.count - 1 }));
+		},
+	};
 }
 
 // Checks if a post with the given id has been liked by retrieving
 // from localStorage and comparing its expiry with the current time.
 //
 // If the expiry has passed, the post is removed from localStorage.
-export function hasBeenLiked(id: string) {
+function hasBeenLiked(id: string) {
 	const lsValue = localStorage.getItem(`l:${id}`);
 
 	if (lsValue) {
@@ -39,12 +48,16 @@ export function hasBeenLiked(id: string) {
 
 // Saves a post with the given id as liked in localStorage
 // with an expiry of 7 days
-export function saveAsLiked(id: string) {
+function saveAsLiked(id: string) {
 	const expiry = dayjs().add(7, 'day').unix().toString();
 	localStorage.setItem(`l:${id}`, expiry);
 }
 
 // Removes the like for the post with the given ID from localStorage.
-export function removeLike(id: string) {
+function removeLike(id: string) {
 	localStorage.removeItem(`l:${id}`);
+}
+
+export default function likesStore(postId: string) {
+	return createLikesStore(postId);
 }
