@@ -18,8 +18,6 @@ export type Post = {
 const POSTS_PER_PAGE = 10;
 
 export async function listPosts(pageNumber = 1) {
-	const [startIndex, endIndex] = getSliceRange(pageNumber);
-
 	const posts = getAllPostFiles()
 		.filter((post) => post.metadata.isPublished)
 		.sort(
@@ -27,11 +25,8 @@ export async function listPosts(pageNumber = 1) {
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
 		);
 
-	const postsForPage = posts.slice(startIndex, endIndex);
-	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
-	const hasNextPage = posts.length > endIndex;
-
-	return { posts: postsForPage, hasNextPage, hasPreviousPage };
+	const [startIndex, endIndex] = getSliceRange(pageNumber);
+	return parsePageFromPosts(posts, startIndex, endIndex);
 }
 
 export async function listPostsByTopic(topic: string, pageNumber = 1) {
@@ -44,11 +39,7 @@ export async function listPostsByTopic(topic: string, pageNumber = 1) {
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
 		);
 
-	const postsForPage = posts.slice(startIndex, endIndex);
-	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
-	const hasNextPage = posts.length > endIndex;
-
-	return { posts: postsForPage, hasNextPage, hasPreviousPage };
+	return parsePageFromPosts(posts, startIndex, endIndex);
 }
 
 export async function getPost(slug: string) {
@@ -89,6 +80,15 @@ function getAllPostFiles() {
 			slug: getSlugFromPath(path),
 		},
 	}));
+}
+
+function parsePageFromPosts(posts: Post[], startIndex: number, endIndex: number) {
+	const postsForPage = posts.slice(startIndex, endIndex);
+	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
+	const hasNextPage = posts.length > endIndex;
+	const currentPage = Math.floor(startIndex / POSTS_PER_PAGE) + 1;
+
+	return { posts: postsForPage, hasPreviousPage, hasNextPage, currentPage };
 }
 
 function getSlugFromPath(path: string) {

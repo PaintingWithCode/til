@@ -4,10 +4,4 @@
 	export let data;
 </script>
 
-<svelte:head>
-	<title>{data.metadata.title} • Today I Learned</title>
-</svelte:head>
-
-<div class="py-10">
-	<Post post={data} showCopyLink />
-</div>
+<Post post={data.post} showCopyLink />

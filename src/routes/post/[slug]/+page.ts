@@ -10,7 +10,7 @@ export async function load({ params }) {
 	try {
 		const post = await getPost(params.slug);
 
-		return post;
+		return { post, pageTitle: post.metadata.title };
 	} catch (e) {
 		throw error(404, `Could not find that post`);
 	}

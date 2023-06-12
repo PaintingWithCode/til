@@ -2,16 +2,17 @@
 	export let hasPreviousPage = false;
 	export let hasNextPage = false;
 	export let currentPage = 1;
-	export let linkPrefix = '/page/';
-	export let firstPageLink = '/';
+	export let pathPrefix = '/';
 
-	const previousLink = currentPage === 2 ? firstPageLink : `${linkPrefix}${currentPage - 1}`;
-	const nextLink = `${linkPrefix}${currentPage + 1}`;
+	const pagePrefix = pathPrefix + 'page/';
+	const previousLink = currentPage === 2 ? pathPrefix : `${pagePrefix}${currentPage - 1}`;
+	const nextLink = `${pagePrefix}${currentPage + 1}`;
 </script>
 
 <div class="flex flex-row justify-between text-dune-700">
 	{#if hasPreviousPage}
 		<a
+			rel="prev"
 			href={previousLink}
 			class="group flex flex-row items-center space-x-2 font-mono font-bold uppercase leading-none"
 		>
@@ -24,6 +25,7 @@
 	{/if}
 	{#if hasNextPage}
 		<a
+			rel="next"
 			href={nextLink}
 			class="group float-right ml-auto flex flex-row items-center space-x-2 font-mono font-bold uppercase leading-none"
 		>

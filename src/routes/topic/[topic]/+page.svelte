@@ -2,12 +2,12 @@
 	import { Post, Pagination } from '$lib/components';
 
 	export let data;
-	const { posts, hasNextPage, hasPreviousPage, topic } = data;
+	const { posts, hasNextPage, topic } = data;
 </script>
 
 {#each posts as post}
 	<Post {post} />
 {/each}
-{#if hasPreviousPage || hasNextPage}
-	<Pagination {hasNextPage} {hasPreviousPage} linkPrefix={`/topic/${topic}/page/`} />
+{#if hasNextPage}
+	<Pagination {hasNextPage} pathPrefix={`/topic/${topic}/`} />
 {/if}
