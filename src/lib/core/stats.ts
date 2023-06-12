@@ -41,7 +41,6 @@ export function hasBeenLiked(id: string) {
 // with an expiry of 7 days
 export function saveAsLiked(id: string) {
 	const expiry = dayjs().add(7, 'day').unix().toString();
-	console.log(expiry);
 	localStorage.setItem(`l:${id}`, expiry);
 }
 

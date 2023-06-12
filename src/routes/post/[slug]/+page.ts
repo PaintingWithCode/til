@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { listAllSlugs, getPost } from '$lib/core/posts';
 
-export async function entries() {
+export function entries() {
 	const slugs = listAllSlugs();
 	return slugs;
 }

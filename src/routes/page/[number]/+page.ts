@@ -3,7 +3,7 @@ import { listPosts } from '$lib/core/posts';
 
 export const prerender = 'auto';
 
-export async function load({ params }) {
+export function load({ params }) {
 	const pageNumber = Number(params.number);
 	const data = listPosts(pageNumber);
 

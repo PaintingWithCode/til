@@ -11,6 +11,7 @@
 
 	let isLiked: boolean | undefined;
 	let isViewed: boolean | undefined;
+	$: allLoaded = isLiked !== undefined && isViewed !== undefined;
 
 	onMount(() => {
 		if (browser) {
@@ -32,7 +33,7 @@
 	}
 </script>
 
-{#if isLiked !== undefined && isViewed !== undefined}
+{#if allLoaded}
 	<div class="flex basis-1/2 items-center justify-center leading-none">
 		<i class="mu mu-show mr-1.5 text-2xl leading-none" />
 		{millify(views, { precision: 2 })}

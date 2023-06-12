@@ -1,12 +1,12 @@
 import { error } from '@sveltejs/kit';
 import { listAllTopics, listPosts } from '$lib/core/posts';
 
-export async function entries() {
+export function entries() {
 	const topics = listAllTopics();
 	return topics;
 }
 
-export async function load({ params }) {
+export function load({ params }) {
 	const topic = params.topic;
 	const data = listPosts(1, params.topic);
 
