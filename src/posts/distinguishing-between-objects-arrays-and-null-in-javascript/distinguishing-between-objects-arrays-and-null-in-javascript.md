@@ -1,25 +1,23 @@
 ---
 id: 62fdhBXm
-title: Distinguishing between objects, arrays and null in JavaScript
-date: '2023-06-07'
+title: Distinguishing between arrays and objects in JavaScript
+date: '2023-06-12'
 topic: javascript
-isPublished: false
+isPublished: true
 ---
 
-You're right, `typeof null` does indeed return `'object'` in JavaScript. To handle the case of `null`, you can include an additional check in your code. Here's an updated version that handles both arrays and objects, including the case of `null`:
+Contrary to what you'd expect, `typeof [1, 2, 3]` returns `'object'` in JS.
+
+If you need to distinguish between the two, for cases like dynamic component rendering from a JSON in React, you'll need to use the following approach:
 
 ```javascript
 const variable = [1, 2, 3];
 
 if (Array.isArray(variable)) {
   console.log('variable is an array');
-} else if (variable !== null && typeof variable === 'object') {
+} else if (typeof variable === 'object') {
   console.log('variable is an object');
-} else {
-  console.log('variable is neither an object nor an array');
 }
 ```
 
-In this modified code, we added an extra condition `variable !== null` to ensure that `null` is not considered as an object. This way, if the `variable` is `null`, it will not pass the second condition and will fall into the `else` block.
-
-Now the code will output `'variable is an array'` if the `variable` is an array, `'variable is an object'` if it is an object (excluding `null`), and `'variable is neither an object nor an array'` for any other cases.
+For the dynamic rendering case, it's worth remembering that `typeof null` also outputs `'object'`.
