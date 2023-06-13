@@ -50,7 +50,7 @@ async function main() {
 function createPost(post) {
 	const { slug, tags } = post;
 
-	let parsedTags;
+	let parsedTags: string[] | undefined;
 	if (tags && tags.length > 0) {
 		parsedTags = tags.split(',');
 	}

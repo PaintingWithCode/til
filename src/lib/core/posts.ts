@@ -1,6 +1,6 @@
 import type { SvelteComponent } from 'svelte';
 
-type PostMetadata = {
+export type PostMetadata = {
 	id: string;
 	title: string;
 	date: string;

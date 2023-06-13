@@ -1,5 +1,5 @@
 ---
-nanoid: qRRqPxxD
+id: qRRqPxxD
 title: An empty string is falsy in JavaScript
 date: '2023-06-06'
 topic: javascript

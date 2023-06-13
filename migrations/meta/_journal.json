@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1686607021087,
+      "tag": "0000_magical_mattie_franklin",
+      "breakpoints": true
+    }
+  ]
+}
