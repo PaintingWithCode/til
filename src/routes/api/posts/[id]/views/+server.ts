@@ -8,7 +8,7 @@ export async function PATCH({ params }) {
 	try {
 		await db
 			.update(posts)
-			.set({ likes: sql`likes + 1` })
+			.set({ views: sql`views + 1` })
 			.where(eq(posts.id, params.id))
 			.run();
 

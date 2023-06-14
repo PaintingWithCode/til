@@ -1,13 +1,8 @@
 <script>
-	import { Post, Pagination } from '$lib/components';
+	import { Feed } from '$lib/components';
 
 	export let data;
-	const { posts, hasNextPage, topic } = data;
+	const pathPrefix = `/topic/${data.topic}`;
 </script>
 
-{#each posts as post}
-	<Post {post} />
-{/each}
-{#if hasNextPage}
-	<Pagination {hasNextPage} pathPrefix={`/topic/${topic}/`} />
-{/if}
+<Feed data={{ ...data, pathPrefix }} />
