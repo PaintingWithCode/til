@@ -2,7 +2,7 @@
 	class="flex h-10 w-full items-center justify-between border-t border-dune-800 border-dune-800/80 bg-raffia-100 px-8 text-sm"
 >
 	<div>
-		&copy; {new Date().getFullYear()}
+		A miniblog by
 		<a
 			href="https://aravindmurali.com"
 			class="font-semibold decoration-supernova decoration-2 underline-offset-4 hover:underline"
