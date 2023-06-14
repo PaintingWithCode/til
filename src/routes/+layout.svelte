@@ -19,7 +19,7 @@
 	<title>{title($page.data?.pageTitle)}</title>
 </svelte:head>
 
-<div class="min-w-screen h-screen overflow-y-auto">
+<div id="page" class="min-w-screen h-screen overflow-y-auto">
 	<Header />
 	<main
 		class="z-10 mx-auto flex min-h-[calc(100vh-6.5rem)] max-w-2xl flex-col space-y-8 py-10 selection:bg-supernova/50"
