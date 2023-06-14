@@ -8,9 +8,9 @@ isPublished: true
 
 Contrary to what you'd expect, `typeof [1, 2, 3]` returns `'object'` in JS.
 
-If you need to distinguish between the two, for cases like dynamic component rendering from a JSON in React, you'll need to use the following approach:
+If you need to distinguish between the two, for cases like dynamic component rendering from JSON in React, you'll need to use the following approach:
 
-```javascript
+```javascript showLineNumbers
 const variable = [1, 2, 3];
 
 if (Array.isArray(variable)) {
@@ -20,4 +20,4 @@ if (Array.isArray(variable)) {
 }
 ```
 
-For the dynamic rendering case, it's worth remembering that `typeof null` also outputs `'object'`.
+For the dynamic rendering case, it's worth remembering that `typeof null` also outputs `'object'` and might need to also be handled.
