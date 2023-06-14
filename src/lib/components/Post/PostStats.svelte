@@ -17,10 +17,12 @@
 
 	onMount(async () => {
 		if (browser) {
-			const stats = await axios.get<PostStats>(`/api/posts/${postId}`);
-			if (stats.data) {
-				views.init(stats.data.views);
-				likes.init(stats.data.likes);
+			const stats = await axios
+				.get<PostStats, PostStats>(`/api/posts/${postId}`, { id: postId })
+				.then((result) => result.data);
+			if (stats) {
+				views.init(stats.views);
+				likes.init(stats.likes);
 				storesInitialized = true;
 			}
 		}
@@ -29,9 +31,12 @@
 	function onLikeClick() {
 		if ($likes.isLiked) {
 			likes.unlikePost();
+			axios.patch(`/api/posts/${postId}/unlike`);
 		} else {
 			likes.likePost();
+			axios.patch(`/api/posts/${postId}/like`);
 		}
+		axios.storage.remove(postId);
 	}
 </script>
 

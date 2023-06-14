@@ -1,16 +1,18 @@
 import { error, json } from '@sveltejs/kit';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 
 import db from '$lib/db';
 import { posts } from '$lib/db/schema.js';
 
-export async function GET({ params }) {
+export async function PATCH({ params }) {
 	try {
 		const post = await db
-			.select({ likes: posts.likes, views: posts.views })
-			.from(posts)
+			.update(posts)
+			.set({ likes: sql`likes + 1` })
 			.where(eq(posts.id, params.id))
-			.get();
+			.returning({ likes: posts.likes })
+			.run();
+
 		return json(post);
 	} catch {
 		throw error(404, 'Post not found');
