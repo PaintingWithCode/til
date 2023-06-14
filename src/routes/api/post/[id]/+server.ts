@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import { eq } from 'drizzle-orm';
 
 import db from '$lib/db';
-import { posts } from '$lib/db/schema.js';
+import { posts } from '$lib/db/schema';
 
 export async function GET({ params }) {
 	try {

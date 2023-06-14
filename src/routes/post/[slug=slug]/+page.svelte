@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	import axios from '$lib/api';
 	import { Post } from '$lib/components';
+	import { registerView } from '$lib/api/post';
 
 	export let data;
 
 	onMount(() => {
-		axios.patch(`/api/posts/${data.post.metadata.id}/views`);
+		registerView(data.post.metadata.id);
 	});
 </script>
 

@@ -4,26 +4,21 @@
 
 	import { browser } from '$app/environment';
 	import likesStore from '$lib/stores/likes';
-	import axios from '$lib/api';
+	import * as postsApi from '$lib/api/post';
 
 	export let postId: string;
 
-	type PostStats = { views: number; likes: number };
-
-	let views = 1;
 	const likes = likesStore(postId);
-
-	let storesInitialized = false;
+	let views = 1;
+	let isLoaded = false;
 
 	onMount(async () => {
 		if (browser) {
-			const stats = await axios
-				.get<PostStats, PostStats>(`/api/posts/${postId}`, { id: postId })
-				.then((result) => result.data);
+			const stats = await postsApi.getStats(postId);
 			if (stats) {
 				views = stats.views;
 				likes.init(stats.likes);
-				storesInitialized = true;
+				isLoaded = true;
 			}
 		}
 	});
@@ -31,16 +26,15 @@
 	function onLikeClick() {
 		if ($likes.isLiked) {
 			likes.unlikePost();
-			axios.patch(`/api/posts/${postId}/unlike`);
+			postsApi.unlikePost(postId);
 		} else {
 			likes.likePost();
-			axios.patch(`/api/posts/${postId}/like`);
+			postsApi.likePost(postId);
 		}
-		axios.storage.remove(postId);
 	}
 </script>
 
-{#if storesInitialized}
+{#if isLoaded}
 	<div class="flex basis-1/2 items-center justify-center leading-none">
 		<i class="mu mu-show mr-1.5 text-2xl leading-none" />
 		{millify(views, { precision: 2 })}

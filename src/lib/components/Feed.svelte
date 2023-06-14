@@ -3,7 +3,7 @@
 
 	import type { Post as PostType } from '$lib/core/posts';
 	import { Post, Pagination } from '$lib/components';
-	import axios from '$lib/api';
+	import { registerView } from '$lib/api/post';
 
 	export let data: {
 		posts: PostType[];
@@ -15,23 +15,19 @@
 
 	const { hasPreviousPage, hasNextPage, currentPage, pathPrefix } = data;
 
-	const posts: Array<PostType & { node?: HTMLElement }> = data.posts.map((p) => ({
+	type IntersectablePosts = Array<PostType & { node?: HTMLElement }>;
+
+	const posts: IntersectablePosts = data.posts.map((p) => ({
 		...p,
 		node: undefined,
 	}));
-
-	function registerView(postId: string) {
-		axios.patch(`/api/posts/${postId}/views`);
-	}
 </script>
 
 {#each posts as post}
 	<IntersectionObserver
 		once
 		element={post.node}
-		on:intersect={(e) => {
-			registerView(post.metadata.id);
-		}}
+		on:intersect={() => registerView(post.metadata.id)}
 		threshold={0.8}
 	>
 		<div bind:this={post.node}>

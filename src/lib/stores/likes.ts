@@ -18,12 +18,12 @@ function createLikesStore(postId: string) {
 			});
 		},
 		likePost() {
-			saveAsLiked(postId);
 			update((current) => ({ isLiked: true, count: current.count + 1 }));
+			saveAsLiked(postId);
 		},
 		unlikePost() {
-			removeLike(postId);
 			update((current) => ({ isLiked: false, count: current.count - 1 }));
+			removeLike(postId);
 		},
 	};
 }

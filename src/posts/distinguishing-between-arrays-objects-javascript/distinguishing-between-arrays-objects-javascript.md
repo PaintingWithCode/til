@@ -20,4 +20,4 @@ if (Array.isArray(variable)) {
 }
 ```
 
-For the dynamic rendering case, it's worth remembering that `typeof null` also outputs `'object'` and might need to also be handled.
+For the dynamic rendering case, it's worth remembering that `typeof null` also outputs `'object'` and might need to be handled as well.
