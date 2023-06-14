@@ -4,19 +4,25 @@
 
 	import { browser } from '$app/environment';
 	import { likesStore, viewsStore } from '$lib/stores';
+	import axios from '$lib/api';
 
 	export let postId: string;
+
+	type PostStats = { views: number; likes: number };
 
 	const views = viewsStore(postId);
 	const likes = likesStore(postId);
 
-	let allInitialized = false;
+	let storesInitialized = false;
 
-	onMount(() => {
+	onMount(async () => {
 		if (browser) {
-			views.init();
-			likes.init();
-			allInitialized = true;
+			const stats = await axios.get<PostStats>(`/api/posts/${postId}`);
+			if (stats.data) {
+				views.init(stats.data.views);
+				likes.init(stats.data.likes);
+				storesInitialized = true;
+			}
 		}
 	});
 
@@ -29,7 +35,7 @@
 	}
 </script>
 
-{#if allInitialized}
+{#if storesInitialized}
 	<div class="flex basis-1/2 items-center justify-center leading-none">
 		<i class="mu mu-show mr-1.5 text-2xl leading-none" />
 		{millify($views.count, { precision: 2 })}

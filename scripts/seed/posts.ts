@@ -56,9 +56,7 @@ async function migrateAndSeed(postIds: string[]) {
 	const newPostIds = postIds.filter((id) => !existingPostIds.includes(id));
 
 	return Promise.all(
-		newPostIds.map(async (id) =>
-			db.insert(posts).values({ id, views: 1, likes: 1 }).onConflictDoNothing().run()
-		)
+		newPostIds.map(async (id) => db.insert(posts).values({ id }).onConflictDoNothing().run())
 	);
 }
 

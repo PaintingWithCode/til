@@ -11,9 +11,9 @@ function createViewsStore(postId: string) {
 
 	return {
 		subscribe,
-		init() {
+		init(count: number) {
 			set({
-				count: 123,
+				count,
 				isViewed: hasBeenViewed(postId),
 			});
 		},

@@ -11,9 +11,9 @@ function createLikesStore(postId: string) {
 
 	return {
 		subscribe,
-		init() {
+		init(count: number) {
 			set({
-				count: 99,
+				count,
 				isLiked: hasBeenLiked(postId),
 			});
 		},
