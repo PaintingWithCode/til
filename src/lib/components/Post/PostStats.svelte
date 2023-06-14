@@ -3,14 +3,14 @@
 	import millify from 'millify';
 
 	import { browser } from '$app/environment';
-	import { likesStore, viewsStore } from '$lib/stores';
+	import likesStore from '$lib/stores/likes';
 	import axios from '$lib/api';
 
 	export let postId: string;
 
 	type PostStats = { views: number; likes: number };
 
-	const views = viewsStore(postId);
+	let views = 1;
 	const likes = likesStore(postId);
 
 	let storesInitialized = false;
@@ -21,7 +21,7 @@
 				.get<PostStats, PostStats>(`/api/posts/${postId}`, { id: postId })
 				.then((result) => result.data);
 			if (stats) {
-				views.init(stats.views);
+				views = stats.views;
 				likes.init(stats.likes);
 				storesInitialized = true;
 			}
@@ -43,7 +43,7 @@
 {#if storesInitialized}
 	<div class="flex basis-1/2 items-center justify-center leading-none">
 		<i class="mu mu-show mr-1.5 text-2xl leading-none" />
-		{millify($views.count, { precision: 2 })}
+		{millify(views, { precision: 2 })}
 	</div>
 	<div class="flex basis-1/2 items-center justify-center leading-none">
 		<button

@@ -60,6 +60,7 @@
 		"microns": "^1.1.3",
 		"millify": "^6.1.0",
 		"shiki": "^0.14.2",
-		"svelte-action-balancer": "^1.0.4"
+		"svelte-action-balancer": "^1.0.4",
+		"svelte-intersection-observer": "^0.10.0"
 	}
 }
