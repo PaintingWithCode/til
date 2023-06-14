@@ -17,9 +17,9 @@
 		on:change={onChange}
 		aria-label={`${checked ? 'Unlike' : 'Like'} post`}
 	/>
-	<svg viewBox="-1 -1 35 25" fill="white">
+	<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 32 28">
 		<path
-			d="M23.5,0.5 C28.4705627,0.5 32.5,4.52943725 32.5,9.5 C32.5,16.9484448 21.46672,22.5 16.5,22.5 C11.53328,22.5 0.5,16.9484448 0.5,9.5 C0.5,4.52952206 4.52943725,0.5 9.5,0.5 C12.3277083,0.5 14.8508336,1.80407476 16.5007741,3.84362242 C18.1491664,1.80407476 20.6722917,0.5 23.5,0.5 Z"
+			d="M23.6,0 C28.2391919,0 32,3.7608081 32,8.4 C32,10.4937282 31.2339853,12.4085441 29.9669229,13.8794807 C29.9771869,13.8821428 29.9885909,13.8849802 30,13.8878201 L16.6473282,27.3832053 C16.2588853,27.7757999 15.6257293,27.7791655 15.2331346,27.3907225 L15.2211057,27.3786159 L15.2211057,27.3786159 L2.78496745,14.6476113 C1.07519722,13.1099495 0,10.8805376 0,8.4 C0,3.7608081 3.7608081,0 8.4,0 C11.7581176,0 14.6559876,1.97055378 16.0003625,4.8184136 C17.3440124,1.97055378 20.2418824,0 23.6,0 Z"
 		/>
 	</svg>
 </label>
@@ -27,11 +27,9 @@
 <style>
 	.heart-switch {
 		--duration: 0.4s;
-		--stroke: #363430;
-		--stroke-active: #b91c1c;
-		--fill: #d8d8d9;
-		--fill-active: #ef4444;
-		--shadow: rgba(0, 9, 61, 0.25);
+		--fill: #aba59d;
+		--fill-active: #dc2626;
+		--shadow: rgba(0, 9, 61, 0.5);
 		cursor: pointer;
 		position: relative;
 		transform: scale(var(--s, 1)) translateZ(0);
@@ -50,21 +48,18 @@
 		z-index: 1;
 		margin: 0;
 		padding: 0;
-		left: 2px;
-		top: 1.5px;
-		width: 11px;
-		height: 11px;
+		left: 1.15px;
+		top: 2px;
+		width: 7.5px;
+		height: 7.5px;
 		border-radius: 50%;
 		background: #f8fafc;
-		box-shadow: 0 1px 3px 0 var(--shadow);
+		@apply drop-shadow-sm;
 	}
 	.heart-switch input + svg {
-		width: 24px;
-		height: calc(25px / 1.5);
+		width: 18px;
+		height: 18px;
 		fill: var(--fill);
-		stroke: var(--stroke);
-		stroke-width: 1px;
-		stroke-linejoin: round;
 		display: block;
 		transition: stroke var(--duration), fill var(--duration);
 	}
@@ -85,31 +80,31 @@
 
 	@keyframes uncheck {
 		0% {
-			transform: rotate(-30deg) translateX(9px) translateY(5px);
+			transform: rotate(-28deg) translateX(7.5px) translateY(4px);
 		}
 		50% {
-			transform: rotate(30deg) translateX(6px);
+			transform: rotate(28deg) translateX(4.5px) translateY(2px);
 		}
 		75% {
-			transform: rotate(30deg) translateX(3px) scaleX(1.1);
+			transform: rotate(28deg) translateX(3.5px) translateY(1.5px);
 		}
 		100% {
-			transform: rotate(30deg);
+			transform: rotate(28deg);
 		}
 	}
 
 	@keyframes check {
 		0% {
-			transform: rotate(30deg);
+			transform: rotate(28deg);
 		}
 		25% {
-			transform: rotate(30deg) translateX(3px) scaleX(1.1);
+			transform: rotate(28deg) translateX(3.5px) translateY(1.5px);
 		}
 		50% {
-			transform: rotate(30deg) translateX(6px);
+			transform: rotate(28deg) translateX(4.5px) translateY(2.5px);
 		}
 		100% {
-			transform: rotate(-30deg) translateX(8px) translateY(4.5px);
+			transform: rotate(-28deg) translateX(7.5px) translateY(4px);
 		}
 	}
 </style>

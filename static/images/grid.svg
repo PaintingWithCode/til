@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <line x1="2.5" y1="13.5" x2="6.5" y2="13.5" id="Line-3" stroke="#7e4c2e"></line>
+        <line x1="11.5" y1="13.5" x2="15.5" y2="13.5" id="Line-3-Copy-3" stroke="#7e4c2e" transform="translate(13.500000, 13.500000) rotate(90.000000) translate(-13.500000, -13.500000) "></line>
+        <line x1="11.5" y1="22.5" x2="15.5" y2="22.5" id="Line-3-Copy-4" stroke="#7e4c2e" transform="translate(13.500000, 22.500000) rotate(90.000000) translate(-13.500000, -22.500000) "></line>
+        <line x1="11.5" y1="4.5" x2="15.5" y2="4.5" id="Line-3-Copy-5" stroke="#7e4c2e" transform="translate(13.500000, 4.500000) rotate(90.000000) translate(-13.500000, -4.500000) "></line>
+        <line x1="11.5" y1="13.5" x2="15.5" y2="13.5" id="Line-3-Copy" stroke="#7e4c2e"></line>
+        <line x1="20.5" y1="13.5" x2="24.5" y2="13.5" id="Line-3-Copy-2" stroke="#7e4c2e"></line>
+    </g>
+</svg>
