@@ -5,6 +5,7 @@
 	import { browser } from '$app/environment';
 	import likesStore from '$lib/stores/likes';
 	import * as postsApi from '$lib/api/post';
+	import HeartSwitch from './HeartSwitch.svelte';
 
 	export let postId: string;
 
@@ -40,13 +41,7 @@
 		{millify(views, { precision: 2 })}
 	</div>
 	<div class="flex basis-1/2 items-center justify-center leading-none">
-		<button
-			type="button"
-			on:click={onLikeClick}
-			aria-label={$likes.isLiked ? 'Unlike' : 'Like'}
-			class="mu mu-heart text-2xl leading-none text-red-600 transition-opacity"
-			style={`opacity: ${$likes.isLiked ? 1 : 0.4}`}
-		/>
+		<HeartSwitch checked={$likes.isLiked} handleChange={onLikeClick} />
 		<span class="ml-1.5 flex flex-grow">{millify($likes.count, { precision: 2 })}</span>
 	</div>
 {/if}
