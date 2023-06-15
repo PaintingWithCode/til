@@ -3,11 +3,11 @@ id: {{nanoid}}
 title: {{title}}
 date: '{{date}}'
 topic: {{topic}}
-{{#if tags}}
+{{#tags.length}}
 additionalTags: 
-  {{#each tags}}
-  - '{{this}}'
-  {{/each}}
-{{/if}}
+  {{#tags}}
+  - '{{.}}'
+  {{/tags}}
+{{/tags.length}}
 isPublished: false
 ---
