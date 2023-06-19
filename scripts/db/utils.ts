@@ -26,6 +26,9 @@ export async function getPublishedPosts() {
 }
 
 export function createlibSQLClient() {
-	const client = createClient({ url: process.env.DATABASE_URL ?? '' });
+	const client = createClient({
+		url: process.env.DATABASE_URL ?? '',
+		authToken: process.env.DATABASE_AUTH_TOKEN,
+	});
 	return drizzle(client);
 }

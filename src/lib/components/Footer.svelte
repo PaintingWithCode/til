@@ -1,5 +1,5 @@
 <footer
-	class="flex h-10 w-full items-center justify-between border-t border-dune-800 border-dune-800/80 bg-raffia-100 px-8 text-sm"
+	class="flex h-10 w-full items-center justify-between border-t border-dune-800 border-dune-800/80 bg-raffia-100 px-4 text-sm md:px-8"
 >
 	<div>
 		A miniblog by

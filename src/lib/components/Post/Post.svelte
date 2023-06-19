@@ -30,13 +30,13 @@
 </script>
 
 <article class="z-10 rounded-sm border border-dune-800/80 bg-desert-storm">
-	<div class="px-10 py-8">
-		<time class="font-mono font-semibold text-dune-600" datetime={date}>
+	<div class="px-6 py-8 md:px-10">
+		<time class="font-mono text-sm font-semibold text-dune-600 md:text-base" datetime={date}>
 			{date.replaceAll('-', '/')}
 		</time>
 		<h1
 			use:balancer={{ enabled: true, ratio: 0.55 }}
-			class="mt-1.5 font-display text-3xl font-extrabold leading-tight text-black"
+			class="mt-1.5 font-display text-2xl font-extrabold leading-tight text-black md:text-3xl"
 		>
 			<a
 				href={`/post/${slug}`}
@@ -47,7 +47,7 @@
 		<svelte:component this={content} />
 	</div>
 	<div
-		class="flex h-10 items-center border-t border-dune-800/80 font-mono font-bold uppercase leading-none text-black"
+		class="flex h-10 items-center border-t border-dune-800/80 font-mono text-sm font-bold uppercase leading-none text-black md:text-base"
 	>
 		<div class="flex basis-1/3 items-center justify-center border-r border-dune-800/80 py-3">
 			<a

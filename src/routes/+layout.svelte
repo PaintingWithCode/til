@@ -36,7 +36,7 @@
 	<Header isGradientDisabled={isHeaderGradientDisabled} />
 	<div class="z-10 min-h-[calc(100vh-6.5rem)]">
 		<div class="bg-grid" />
-		<main class="mx-auto flex max-w-2xl flex-col space-y-8 py-10">
+		<main class="mx-auto flex max-w-2xl flex-col space-y-8 px-2 py-10 md:px-2 lg:px-0">
 			<slot />
 		</main>
 	</div>
