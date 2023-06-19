@@ -13,8 +13,7 @@
 		"scaffold-post": "jiti ./scripts/scaffold/post",
 		"db:migrate": "drizzle-kit generate:sqlite",
 		"db:setup": "jiti ./scripts/db/setup",
-		"db:seed-stats": "jiti ./scripts/db/stats",
-		"db:seed-search": "jiti ./scripts/db/search"
+		"db:seed-stats": "jiti ./scripts/db/stats"
 	},
 	"devDependencies": {
 		"@clack/prompts": "^0.6.3",
@@ -59,7 +58,6 @@
 		"axios-cache-interceptor": "^1",
 		"dayjs": "^1.11.8",
 		"drizzle-orm": "^0.26.5",
-		"meilisearch": "^0.33.0",
 		"microns": "^1.1.3",
 		"millify": "^6.1.0",
 		"shiki": "^0.14.2",

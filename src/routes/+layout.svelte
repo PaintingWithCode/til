@@ -45,13 +45,7 @@
 
 <style>
 	.bg-grid {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		z-index: -1;
-		opacity: 0.1;
+		@apply absolute bottom-0 left-0 right-0 top-0 z-[-1] opacity-10;
 		background-image: url('/images/grid.svg');
 	}
 </style>

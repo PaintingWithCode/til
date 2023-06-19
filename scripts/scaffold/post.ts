@@ -1,10 +1,10 @@
 import fs from 'node:fs';
 import * as p from '@clack/prompts';
-import slugify from 'slugify';
 import { customAlphabet } from 'nanoid';
-import handlebars from 'handlebars';
+import slugify from 'slugify';
+import mustache from 'mustache';
 
-const template = handlebars.compile(fs.readFileSync(__dirname + '/template.hbs').toString('utf-8'));
+const template = fs.readFileSync(__dirname + '/template.mustache', 'utf-8');
 
 async function main() {
 	p.intro(`Scaffold new post`);
@@ -32,7 +32,7 @@ async function main() {
 						if (value.length === 0) return `A topic is required!`;
 					},
 				}),
-			tags: () => p.text({ message: 'Additional Tags (comma separated)' }),
+			tags: () => p.text({ message: 'Tags (comma separated)' }),
 		},
 		{
 			onCancel: () => {
@@ -50,20 +50,22 @@ async function main() {
 function createPost(post) {
 	const { slug, tags } = post;
 
-	let parsedTags: string[] | undefined;
+	let parsedTags = [];
 	if (tags && tags.length > 0) {
 		parsedTags = tags.split(',');
 	}
 
-	const nanoid = customAlphabet('256789bcdfghjkmnpqrstvwyzBCDFGHJKLMNPQRSTVWYZ', 8);
 	const date = new Date().toISOString().split('T')[0];
 
 	const dirPath = `src/posts/${slug}`;
 	const filePath = `${dirPath}/${slug}.md`;
+	const nanoid = customAlphabet('256789bcdfghjkmnpqrstvwyzBCDFGHJKLMNPQRSTVWYZ', 8);
 
 	fs.mkdirSync(dirPath);
 
-	fs.writeFileSync(filePath, template({ ...post, nanoid, date, tags: parsedTags }));
+	const rendered = mustache.render(template, { ...post, nanoid, date, tags: parsedTags });
+
+	fs.writeFileSync(filePath, rendered);
 
 	return filePath;
 }

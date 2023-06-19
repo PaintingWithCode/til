@@ -18,8 +18,6 @@ export type Post = {
 const POSTS_PER_PAGE = 10;
 
 export function listPosts(pageNumber = 1, topic?: string) {
-	const [startIndex, endIndex] = getSliceRange(pageNumber);
-
 	const posts = getAllPostFiles()
 		.map(([path, post]) => ({
 			...post,
@@ -34,7 +32,7 @@ export function listPosts(pageNumber = 1, topic?: string) {
 				new Date(second.metadata.date).getTime() - new Date(first.metadata.date).getTime()
 		);
 
-	return parsePageFromPosts(posts, startIndex, endIndex);
+	return parsePageFromPosts(posts, pageNumber);
 }
 
 export async function getPost(slug: string) {
@@ -79,7 +77,8 @@ function getAllPostFiles() {
 	return Object.entries(glob_import);
 }
 
-function parsePageFromPosts(posts: Post[], startIndex: number, endIndex: number) {
+function parsePageFromPosts(posts: Post[], pageNumber: number) {
+	const [startIndex, endIndex] = getSliceRange(pageNumber);
 	const postsForPage = posts.slice(startIndex, endIndex);
 	const hasPreviousPage = startIndex >= POSTS_PER_PAGE;
 	const hasNextPage = posts.length > endIndex;

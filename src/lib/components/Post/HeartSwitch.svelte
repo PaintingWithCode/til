@@ -30,37 +30,25 @@
 		--fill: #aba59d;
 		--fill-active: #dc2626;
 		--shadow: rgba(0, 9, 61, 0.5);
-		cursor: pointer;
-		position: relative;
+		@apply relative cursor-pointer;
 		transform: scale(var(--s, 1)) translateZ(0);
 		transition: transform 0.2s;
-		-webkit-tap-highlight-color: transparent;
 	}
 	.heart-switch:active {
 		--s: 0.95;
 	}
 	.heart-switch input {
-		appearance: none;
-		position: absolute;
-		outline: none;
-		border: none;
-		pointer-events: none;
-		z-index: 1;
-		margin: 0;
-		padding: 0;
+		@apply pointer-events-none absolute z-[1] m-0 appearance-none rounded-[50%] border-none bg-desert-storm p-0 outline-none drop-shadow-sm;
 		left: 1.15px;
 		top: 2px;
 		width: 7.5px;
 		height: 7.5px;
-		border-radius: 50%;
-		background: #f8fafc;
-		@apply drop-shadow-sm;
 	}
 	.heart-switch input + svg {
+		@apply block;
 		width: 18px;
 		height: 18px;
 		fill: var(--fill);
-		display: block;
 		transition: stroke var(--duration), fill var(--duration);
 	}
 	.heart-switch input:not(:checked) {
