@@ -6,11 +6,35 @@ export function entries() {
 	return slugs;
 }
 
-export async function load({ params }) {
+export async function load({ params, url }) {
 	try {
 		const post = await getPost(params.slug);
 
-		return { post, pageTitle: post.metadata.title };
+		const { title } = post.metadata;
+		const { href, origin } = url;
+		const imageUrl = `${origin}/api/og?title=${title}`;
+
+		const meta = {
+			title,
+			url: href,
+			openGraph: {
+				url: href,
+				type: 'article',
+				title,
+				images: [{ url: imageUrl }],
+				article: {
+					publishedTime: post.metadata.date,
+				},
+			},
+			twitter: {
+				cardType: 'summary_large_image',
+				title,
+				url: href,
+				image: imageUrl,
+			},
+		};
+
+		return { post, meta };
 	} catch (e) {
 		throw error(404, `Could not find that post`);
 	}

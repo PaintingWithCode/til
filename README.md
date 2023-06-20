@@ -40,5 +40,7 @@ pnpm dev
   ```
 
 ## Cloning / Forking
-Please review the [license](https://github.com/PaintingWithCode/til/blob/main/LICENSE.txt) and ensure you remove all of my personal information before deploying. You're free to retain the posts since it's meant to be knowledge that's shared :)
+Please review the [license](https://github.com/PaintingWithCode/til/blob/main/LICENSE.txt) and ensure you change my personal information from `src/lib/core/config.ts` before deploying. 
+
+You're free to retain the posts since it's meant to be knowledge that's shared :)
 

@@ -1,20 +1,6 @@
 import Axios from 'axios';
-import { setupCache, type AxiosCacheInstance } from 'axios-cache-interceptor';
+import { setupCache } from 'axios-cache-interceptor';
 
-let client: AxiosCacheInstance;
-let isCacheInitialized = false;
+const client = setupCache(Axios);
 
-function createClient() {
-	if (!isCacheInitialized) {
-		client = setupCache(Axios);
-		isCacheInitialized = true;
-	}
-
-	if (!client) {
-		throw new Error('Cache client is not initialized properly.');
-	}
-
-	return client;
-}
-
-export default createClient();
+export default client;

@@ -5,7 +5,7 @@ async function seed(postIds: string[]) {
 	const db = createlibSQLClient();
 
 	return Promise.all(
-		postIds.map(async (id) => db.insert(posts).values({ id }).onConflictDoNothing().run())
+		postIds.map((id) => db.insert(posts).values({ id }).onConflictDoNothing().run())
 	);
 }
 

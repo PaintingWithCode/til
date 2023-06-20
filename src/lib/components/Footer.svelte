@@ -1,14 +1,18 @@
+<script>
+	import { author, authorSiteUrl } from '$lib/core/config';
+</script>
+
 <footer
 	class="flex h-10 w-full items-center justify-between border-t border-dune-800 border-dune-800/80 bg-raffia-100 px-4 text-sm md:px-8"
 >
 	<div>
 		A miniblog by
 		<a
-			href="https://aravindmurali.com"
+			href={authorSiteUrl}
 			class="font-semibold decoration-supernova decoration-2 underline-offset-4 hover:underline"
 			target="_blank"
 			rel="noreferrer"
-			aria-label="PaintingWithCode">PaintingWithCode</a
+			aria-label="Author website">{author}</a
 		>
 	</div>
 	<a

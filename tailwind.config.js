@@ -5,6 +5,9 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'grid-pattern': "url('/images/grid.svg')",
+			},
 			colors: {
 				black: '#1d1d1b',
 				white: '#fafafa',

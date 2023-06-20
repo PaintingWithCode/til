@@ -12,7 +12,9 @@ export function load({ params }) {
 		throw error(404);
 	}
 
-	const topicTitle = topic.charAt(0).toUpperCase() + topic.slice(1);
+	const meta = {
+		title: topic.charAt(0).toUpperCase() + topic.slice(1),
+	};
 
-	return { ...data, topic, pageTitle: topicTitle };
+	return { ...data, topic, meta };
 }

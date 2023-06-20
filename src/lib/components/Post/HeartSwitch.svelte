@@ -24,13 +24,14 @@
 	</svg>
 </label>
 
-<style>
+<style lang="postcss">
 	.heart-switch {
 		--duration: 0.4s;
 		--fill: #aba59d;
 		--fill-active: #dc2626;
 		--shadow: rgba(0, 9, 61, 0.5);
-		@apply relative cursor-pointer;
+		position: relative;
+		cursor: cursor-pointer;
 		transform: scale(var(--s, 1)) translateZ(0);
 		transition: transform 0.2s;
 	}
@@ -38,14 +39,23 @@
 		--s: 0.95;
 	}
 	.heart-switch input {
-		@apply pointer-events-none absolute z-[1] m-0 appearance-none rounded-[50%] border-none bg-desert-storm p-0 outline-none drop-shadow-sm;
+		@apply bg-desert-storm drop-shadow-sm;
+		pointer-events: none;
+		position: absolute;
+		z-index: 1;
+		margin: 0;
+		appearance: none;
+		border-radius: 50%;
+		border: none;
+		outline: none;
+		padding: 0;
 		left: 1.15px;
 		top: 2px;
 		width: 7.5px;
 		height: 7.5px;
 	}
 	.heart-switch input + svg {
-		@apply block;
+		display: block;
 		width: 18px;
 		height: 18px;
 		fill: var(--fill);

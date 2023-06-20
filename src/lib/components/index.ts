@@ -1,3 +1,4 @@
+export { default as Analytics } from './Analytics.svelte';
 export { default as Header } from './Header.svelte';
 export { default as Feed } from './Feed.svelte';
 export { default as Post } from './Post/Post.svelte';
