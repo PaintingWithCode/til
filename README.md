@@ -1,38 +1,44 @@
-# create-svelte
+# Today I Learned
+A miniblog that catalogues the things I learn day-to-day in software development. 
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Inspired by the TIL blogs of [Hashrocket](https://til.hashrocket.com/) and [Simon Willison](https://til.simonwillison.net/) and to "learn in public" by [swyx](https://www.swyx.io/learn-in-public).
 
-## Creating a project
+## Stack
+- **Framework**: [Sveltekit](https://kit.svelte.dev)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **ORM**: [Drizzle](https://orm.drizzle.team/)
+- **Database**: [Turso](https://turso.tech)
+- **Serverless Functions**: [Cloudflare Workers](https://workers.cloudflare.com)
+- **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com)
 
-If you're seeing this, you've probably already done this step. Congrats!
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Running locally
 
 ```bash
-npm run dev
+# Setup
+pnpm i
+pnpm db:setup
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm dev
 ```
 
-## Building
+## Shell Commands
+- To scaffold a new post:
+  ```bash
+  pnpm scaffold-post
+  ```
 
-To create a production version of your app:
+- To seed post stats to database:
+  ```bash
+  pnpm db:seed-stats
+  ```
+  **Note**: Must be done after publishing a post since stats are only updated by the API and never inserted.
 
-```bash
-npm run build
-```
+- To migrate database schema changes:
+  ```bash
+  pnpm db:migrate
+  ```
 
-You can preview the production build with `npm run preview`.
+## Cloning / Forking
+Please review the [license](https://github.com/PaintingWithCode/til/blob/main/LICENSE.txt) and ensure you remove all of my personal information before deploying. You're free to retain the posts since it's meant to be knowledge that's shared :)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
