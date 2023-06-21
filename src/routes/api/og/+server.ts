@@ -3,15 +3,15 @@ import { error } from '@sveltejs/kit';
 
 function template(title: string) {
 	return `
-	<div tw="flex w-full h-full items-end justify-start">
+	<div tw="flex w-full h-full items-center justify-start">
 		<img
 		tw="absolute top-0 left-0 right-0 bottom-0"
 		height=630
 		width=1200
-		src="https://placehold.co/1200x630.png"
+		src="https://b022bf5b.til-ahu.pages.dev/images/og-template.png"
 
 		/>
-		<h1 tw="text-6xl font-extrabold text-[#1d1d1b] text-left px-20 py-12">
+		<h1 tw="text-6xl font-extrabold text-[#1d1d1b] text-left pt-4 px-12 leading-tight">
 			${title}
 		</h1>
 	</div>
@@ -30,7 +30,7 @@ export async function GET({ url }) {
 		const renderedTemplate = template(title);
 
 		return await ImageResponse(renderedTemplate, {
-			height: 630,
+			height: 627,
 			width: 1200,
 			fonts: [
 				{

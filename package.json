@@ -60,10 +60,12 @@
 	"dependencies": {
 		"@libsql/client": "^0.2.0",
 		"@lottiefiles/svelte-lottie-player": "^0.3.0",
+		"@resvg/resvg-js": "^2.4.1",
 		"axios": "^1",
 		"axios-cache-interceptor": "^1",
 		"drizzle-orm": "^0.26.5",
 		"millify": "^6.1.0",
+		"satori": "^0.10.1",
 		"svelte-action-balancer": "^1.0.4",
 		"svelte-intersection-observer": "^0.10.0"
 	}
