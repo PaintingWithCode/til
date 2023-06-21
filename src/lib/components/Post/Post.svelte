@@ -66,9 +66,7 @@
 				>
 			{/if}
 		</div>
-		<div
-			class="flex basis-1/3 items-center justify-center space-x-4 py-3 pl-6 pr-4 font-medium text-dune-900"
-		>
+		<div class="basis-1/3 font-medium text-dune-900">
 			<PostStats postId={id} />
 		</div>
 	</div>

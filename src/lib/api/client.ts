@@ -1,6 +1,17 @@
-import Axios from 'axios';
-import { setupCache } from 'axios-cache-interceptor';
+import axios from 'axios';
+import { setupCache, type AxiosCacheInstance } from 'axios-cache-interceptor';
 
-const client = setupCache(Axios);
+let client: AxiosCacheInstance;
 
-export default client;
+function getClient() {
+	if (!client) {
+		try {
+			client = setupCache(axios);
+		} catch {
+			console.error('Error initializing API client');
+		}
+	}
+	return client;
+}
+
+export default getClient();

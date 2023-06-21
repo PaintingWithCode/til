@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import millify from 'millify';
 
 	import { browser } from '$app/environment';
@@ -36,12 +37,17 @@
 </script>
 
 {#if isLoaded}
-	<div class="flex basis-1/2 items-center justify-center leading-none">
-		<i class="mu mu-show mr-1.5 text-2xl leading-none" />
-		{millify(views, { precision: 2 })}
-	</div>
-	<div class="flex basis-1/2 items-center justify-center leading-none">
-		<HeartSwitch checked={$likes.isLiked} handleChange={onLikeClick} />
-		<span class="ml-1.5 flex flex-grow">{millify($likes.count, { precision: 2 })}</span>
+	<div
+		class="flex w-full items-center justify-center space-x-4 py-3 pl-6 pr-4"
+		in:fade={{ duration: 200 }}
+	>
+		<div class="flex basis-1/2 items-center justify-center leading-none">
+			<i class="mu mu-show mr-1.5 text-2xl leading-none" />
+			{millify(views, { precision: 2 })}
+		</div>
+		<div class="flex basis-1/2 items-center justify-center leading-none">
+			<HeartSwitch checked={$likes.isLiked} handleChange={onLikeClick} />
+			<span class="ml-1.5 flex flex-grow">{millify($likes.count, { precision: 2 })}</span>
+		</div>
 	</div>
 {/if}

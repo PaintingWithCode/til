@@ -32,7 +32,7 @@ pnpm dev
   ```bash
   pnpm db:seed-stats
   ```
-  **Note**: Must be done after publishing a post since stats are only updated by the API and never inserted.
+  **Note**: If you're using a local db, this must be done after publishing a post since stats are only updated by the API and never inserted. Production database is automatically updated by CI on pushes to main.
 
 - To migrate database schema changes:
   ```bash
@@ -40,7 +40,7 @@ pnpm dev
   ```
 
 ## Cloning / Forking
-Please review the [license](https://github.com/PaintingWithCode/til/blob/main/LICENSE.txt) and ensure you change my personal information from `src/lib/core/config.ts` before deploying. 
+Please review the [license](https://github.com/PaintingWithCode/til/blob/main/LICENSE.txt) and ensure you change the personal information in `src/lib/core/config.ts` before deploying. 
 
 You're free to retain the posts since it's meant to be knowledge that's shared :)
 

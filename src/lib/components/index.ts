@@ -4,3 +4,4 @@ export { default as Feed } from './Feed.svelte';
 export { default as Post } from './Post/Post.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Pagination } from './Pagination.svelte';
+export { default as OgImage } from './OgImage.svelte';
