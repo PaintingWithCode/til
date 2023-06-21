@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
+
 import { listAllSlugs, getPost } from '$lib/core/posts';
+import { siteUrl } from '$lib/core/config.js';
 
 export function entries() {
 	const slugs = listAllSlugs();
@@ -11,14 +13,14 @@ export async function load({ params, url }) {
 		const post = await getPost(params.slug);
 
 		const { title, slug } = post.metadata;
-		const { href, origin } = url;
-		const imageUrl = `${origin}/api/og/${slug}.png`;
+		const imageUrl = `${siteUrl}/api/og/${slug}.png`;
+		const postUrl = siteUrl + url.pathname;
 
 		const meta = {
 			title,
-			url: href,
+			url: postUrl,
 			openGraph: {
-				url: href,
+				url: postUrl,
 				type: 'article',
 				title,
 				images: [{ url: imageUrl }],
@@ -29,7 +31,7 @@ export async function load({ params, url }) {
 			twitter: {
 				cardType: 'summary_large_image',
 				title,
-				url: href,
+				url: postUrl,
 				image: imageUrl,
 			},
 		};
