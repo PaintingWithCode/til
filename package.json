@@ -59,6 +59,7 @@
 	"type": "module",
 	"dependencies": {
 		"@libsql/client": "^0.2.0",
+		"@lottiefiles/svelte-lottie-player": "^0.3.0",
 		"axios": "^1",
 		"axios-cache-interceptor": "^1",
 		"drizzle-orm": "^0.26.5",

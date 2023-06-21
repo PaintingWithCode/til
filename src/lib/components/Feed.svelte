@@ -1,7 +1,7 @@
 <script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
 
-	import type { Post as PostType } from '$lib/core/posts';
+	import type { Post as PostType } from '$lib/core/types';
 	import { Post, Pagination } from '$lib/components';
 	import { registerView } from '$lib/api/post';
 

@@ -1,19 +1,16 @@
 <script lang="ts">
 	import './styles.css';
 
-	import type { SvelteComponentTyped } from 'svelte';
 	import { balancer } from 'svelte-action-balancer';
 
 	import { page } from '$app/stores';
-	import type { Post } from '$lib/core/posts';
+	import type { Post, CustomComponent } from '$lib/core/types';
 	import PostStats from './PostStats.svelte';
 
 	export let post: Post;
 	export let showCopyLink = false;
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	type C = typeof SvelteComponentTyped<any, any, any>;
-	$: content = post.default as unknown as C;
+	$: content = post.default as unknown as CustomComponent;
 
 	const { id, date, title, slug, topic } = post.metadata;
 

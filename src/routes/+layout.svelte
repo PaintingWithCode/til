@@ -29,31 +29,39 @@
 	}
 </script>
 
-<MetaTags
-	title={$page.data?.meta?.title ?? author}
-	titleTemplate="%s • Today I Learned"
-	{description}
-	canonical={$page.data?.meta?.url ?? siteUrl}
-	openGraph={$page.data?.meta?.openGraph ?? {
-		url: siteUrl,
-		type: 'website',
-		title: 'Today I Learned',
-		images: [{ url: ogImageUrl }],
-	}}
-	twitter={$page.data?.meta?.twitter ?? {
-		cardType: 'summary_large_image',
-		title: 'Today I Learned',
-		image: ogImageUrl,
-	}}
-/>
+{#if !$page.error}
+	<MetaTags
+		title={$page.data?.meta?.title ?? author}
+		titleTemplate="%s • Today I Learned"
+		{description}
+		canonical={$page.data?.meta?.url ?? siteUrl}
+		openGraph={$page.data?.meta?.openGraph ?? {
+			url: siteUrl,
+			type: 'website',
+			title: 'Today I Learned',
+			images: [{ url: ogImageUrl }],
+		}}
+		twitter={$page.data?.meta?.twitter ?? {
+			cardType: 'summary_large_image',
+			title: 'Today I Learned',
+			image: ogImageUrl,
+		}}
+	/>
+{/if}
+
 <Analytics />
+
 <div id="page" class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
 	<Header isGradientDisabled={isHeaderGradientDisabled} />
 	<div class="z-10 min-h-[calc(100vh-6.5rem)]">
 		<div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-grid-pattern opacity-10" />
-		<main class="mx-auto flex max-w-2xl flex-col space-y-8 px-2 py-10 md:px-2 lg:px-0">
+		{#if $page.error}
 			<slot />
-		</main>
+		{:else}
+			<main class="mx-auto flex max-w-2xl flex-col space-y-8 px-2 py-10 md:px-2 lg:px-0">
+				<slot />
+			</main>
+		{/if}
 	</div>
 	<Footer />
 </div>

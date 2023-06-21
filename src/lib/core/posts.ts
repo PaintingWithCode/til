@@ -1,19 +1,4 @@
-import type { SvelteComponent } from 'svelte';
-
-export type PostMetadata = {
-	id: string;
-	title: string;
-	date: string;
-	topic: string;
-	slug: string;
-	tags?: string[];
-	isPublished: boolean;
-};
-
-export type Post = {
-	default: SvelteComponent;
-	metadata: PostMetadata;
-};
+import type { Post } from './types';
 
 const POSTS_PER_PAGE = 10;
 
