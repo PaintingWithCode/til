@@ -13,6 +13,7 @@ async function main() {
 	const posts = await getPublishedPosts();
 	const postIds = posts.map((p) => p.data.id);
 	await seed(postIds);
+	console.log(`✔ Successfully seeded ${postIds.length} posts.`);
 }
 
 main();
