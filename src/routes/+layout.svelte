@@ -4,7 +4,7 @@
 
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { Header, Footer } from '$lib/components';
+	import { Analytics, Header, Footer } from '$lib/components';
 	import { author, description, ogImageUrl, siteUrl } from '$lib/core/config';
 
 	type ScrollEvent = UIEvent & {
@@ -52,6 +52,8 @@
 		}}
 	/>
 {/if}
+
+<Analytics />
 
 <div id="page" class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
 	<Header isGradientDisabled={isHeaderGradientDisabled} />
