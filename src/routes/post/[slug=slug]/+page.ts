@@ -10,9 +10,9 @@ export async function load({ params, url }) {
 	try {
 		const post = await getPost(params.slug);
 
-		const { title } = post.metadata;
+		const { title, slug } = post.metadata;
 		const { href, origin } = url;
-		const imageUrl = `${origin}/api/og?title=${title}`;
+		const imageUrl = `${origin}/api/og/${slug}.png`;
 
 		const meta = {
 			title,
