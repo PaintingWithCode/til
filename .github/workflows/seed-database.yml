@@ -20,5 +20,5 @@ jobs:
         with:
           node-version: lts/hydrogen
           cache: pnpm
-      - run: pnpm install --dev
+      - run: pnpm install
       - run: pnpm db:seed-stats
