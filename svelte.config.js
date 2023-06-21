@@ -8,6 +8,12 @@ import mdsvexConfig from './mdsvex.config.js';
 const config = {
 	extensions: ['.svelte', '.md'],
 	preprocess: [preprocess(), mdsvex(mdsvexConfig)],
+	onwarn(warning, handler) {
+		if (warning.filename.includes('@lottiefiles')) {
+			return;
+		}
+		handler(warning);
+	},
 	kit: {
 		adapter: adapter(),
 	},

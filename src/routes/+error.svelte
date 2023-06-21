@@ -15,10 +15,11 @@
 	});
 </script>
 
-<MetaTags title="404" titleTemplate="%s • Today I Learned" noindex />
+<MetaTags title="Page not found" titleTemplate="%s • Today I Learned" noindex />
 <div class="mx-auto max-w-4xl">
 	{#if LottiePlayer}
-		<LottiePlayer
+		<svelte:component
+			this={LottiePlayer}
 			src="/images/404.json"
 			autoplay={true}
 			loop={true}
