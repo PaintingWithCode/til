@@ -8,8 +8,7 @@ Inspired by the TIL blogs of [Hashrocket](https://til.hashrocket.com/) and [Simo
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **ORM**: [Drizzle](https://orm.drizzle.team/)
 - **Database**: [Turso](https://turso.tech)
-- **Serverless Functions**: [Cloudflare Workers](https://workers.cloudflare.com)
-- **Deployment**: [Cloudflare Pages](https://pages.cloudflare.com)
+- **Deployment + Serverless Functions**: [Cloudflare Pages](https://pages.cloudflare.com)
 
 
 ## Running locally

@@ -3,10 +3,9 @@
 	import { MetaTags } from 'svelte-meta-tags';
 
 	import { afterNavigate } from '$app/navigation';
-	import { Header, Footer } from '$lib/components';
 	import { page } from '$app/stores';
+	import { Header, Footer } from '$lib/components';
 	import { author, description, ogImageUrl, siteUrl } from '$lib/core/config';
-	import Analytics from '$lib/components/Analytics.svelte';
 
 	type ScrollEvent = UIEvent & {
 		currentTarget: EventTarget & HTMLDivElement;
@@ -48,8 +47,6 @@
 		}}
 	/>
 {/if}
-
-<Analytics />
 
 <div id="page" class="min-w-screen h-screen overflow-y-auto" on:scroll={onContainerScroll}>
 	<Header isGradientDisabled={isHeaderGradientDisabled} />

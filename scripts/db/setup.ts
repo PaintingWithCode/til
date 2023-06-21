@@ -11,6 +11,7 @@ async function setupStats() {
 
 async function main() {
 	await setupStats();
+	console.log(`✔ Successfully applied migrations.`);
 }
 
 main();
