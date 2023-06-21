@@ -17,7 +17,7 @@
 		on:click={() => (isOpen = !isOpen)}
 	/>
 	{#if isOpen}
-		<div in:slide={{ axis: 'x' }} out:slide={{ axis: 'x' }} class="flex w-36 items-center md:w-48">
+		<div transition:slide={{ axis: 'x' }} class="flex w-36 items-center md:w-48">
 			<!-- svelte-ignore a11y-autofocus -->
 			<input
 				autofocus
@@ -28,8 +28,7 @@
 		</div>
 		{#if value.length}
 			<div
-				in:slide={{ axis: 'x' }}
-				out:slide={{ axis: 'x' }}
+				transition:slide={{ axis: 'x' }}
 				class="absolute left-full top-0 flex h-12 w-12 items-center justify-center bg-orange-600 text-orange-100"
 			>
 				<i
@@ -42,7 +41,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
 	.open {
 		@apply bg-orange-100/60;
 	}
