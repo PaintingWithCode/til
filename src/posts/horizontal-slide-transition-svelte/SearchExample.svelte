@@ -16,7 +16,7 @@
 		<button
 			type="button"
 			aria-label="Open search"
-			class="mu mu-search w-12 leading-none text-dune-800"
+			class="mu mu-search h-12 w-12 leading-none text-dune-800"
 			on:click={() => (isOpen = !isOpen)}
 		/>
 		{#if isOpen}
@@ -25,7 +25,7 @@
 				<input
 					autofocus
 					out:fade={{ duration: 100 }}
-					class="max-w-full bg-transparent text-lg font-medium text-dune-800 focus-visible:outline-none"
+					class="max-w-full bg-transparent text-lg font-medium text-dune-900 focus-visible:outline-none"
 					bind:value
 				/>
 			</div>

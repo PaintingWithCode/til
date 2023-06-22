@@ -12,7 +12,7 @@ export async function PATCH({ params }) {
 			.where(eq(posts.id, params.id))
 			.run();
 
-		return new Response(undefined, { status: 200 });
+		return new Response('Post unliked', { status: 200 });
 	} catch {
 		throw error(404, 'Post not found');
 	}
