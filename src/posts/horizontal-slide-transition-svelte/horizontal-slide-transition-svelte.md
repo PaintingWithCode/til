@@ -11,12 +11,19 @@ isPublished: true
 Svelte provides a couple of useful transitions out of the box, but my favourite has always been the slide. In **v3.56**, a horizontal variant was introduced through the `axis` property:
 ```svelte
 <script>
-  import slide from "svelte/transition";
+  import { slide } from 'svelte/transition'
+  let show = false;
 </script>
-
-<div transiton:slide={{axis: "x"}}>
-  I slide in from the right.
-<div>
+	
+<button on:click={() => (show = !show)}>
+  {show ? 'Hide' : 'Show'}
+</button>
+{#if show}
+  <div 
+    transition:slide={{axis: 'x'}}
+    style='background-color: coral; height: 100px;' 
+  />
+{/if}
 ```
 
 <script>
