@@ -13,6 +13,8 @@
 	class:open={isOpen}
 >
 	<button
+		type="button"
+		aria-label="Open search"
 		class="mu mu-search w-12 leading-none text-orange-600"
 		on:click={() => (isOpen = !isOpen)}
 	/>

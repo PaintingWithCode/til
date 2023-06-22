@@ -8,7 +8,7 @@ function getClient() {
 		try {
 			client = setupCache(axios);
 		} catch {
-			console.error('Error initializing API client');
+			console.error('API client already initialized');
 		}
 	}
 	return client;
