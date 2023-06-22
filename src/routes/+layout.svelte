@@ -1,4 +1,7 @@
 <script lang="ts">
+	import 'microns/fonts/microns.css';
+	import '@fontsource-variable/inter';
+	import '@fontsource/inter-tight/latin-800.css';
 	import '../app.css';
 	import { MetaTags } from 'svelte-meta-tags';
 
