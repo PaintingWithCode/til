@@ -65,7 +65,7 @@
 		{#if $page.error}
 			<slot />
 		{:else}
-			<main class="mx-auto flex max-w-2xl flex-col space-y-8 px-2 py-4 md:px-2 md:py-10 lg:px-0">
+			<main class="mx-auto flex max-w-2.5xl flex-col space-y-8 px-2 py-4 md:px-2 md:py-10 lg:px-0">
 				<slot />
 			</main>
 		{/if}
