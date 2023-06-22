@@ -29,7 +29,7 @@
 					bind:value
 				/>
 			</div>
-			{#if value.length}
+			{#if value}
 				<div
 					transition:slide={{ axis: 'x' }}
 					class="absolute left-full top-0 flex h-12 w-12 items-center justify-center bg-dune-800 text-white"
