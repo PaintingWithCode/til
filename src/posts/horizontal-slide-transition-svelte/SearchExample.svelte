@@ -23,9 +23,10 @@
 			<div transition:slide={{ axis: 'x' }} class="flex w-36 items-center md:w-48">
 				<!-- svelte-ignore a11y-autofocus -->
 				<input
-					autofocus
-					out:fade={{ duration: 100 }}
+					in:fade={{ delay: 250, duration: 150 }}
+					out:fade={{ duration: 50 }}
 					class="max-w-full bg-transparent text-lg font-medium text-dune-900 focus-visible:outline-none"
+					placeholder="Type here"
 					bind:value
 				/>
 			</div>
@@ -36,7 +37,7 @@
 				>
 					<i
 						in:fade={{ duration: 150, delay: 150 }}
-						out:fade={{ duration: 100 }}
+						out:fade={{ duration: 50 }}
 						class="mu mu-arrow-right cursor-not-allowed"
 					/>
 				</div>

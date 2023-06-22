@@ -5,6 +5,9 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
+			maxWidth: {
+				'2.5xl': '46rem',
+			},
 			backgroundImage: {
 				'grid-pattern': "url('/images/grid.svg')",
 			},

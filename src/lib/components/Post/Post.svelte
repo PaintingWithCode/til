@@ -32,7 +32,7 @@
 			{date.replaceAll('-', '/')}
 		</time>
 		<h1
-			use:balancer={{ enabled: true, ratio: 0.55 }}
+			use:balancer={{ enabled: true, ratio: 0.5 }}
 			class="mt-1.5 font-display text-2xl font-extrabold leading-tight text-black sm:text-3xl"
 		>
 			<a
