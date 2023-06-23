@@ -15,14 +15,14 @@ article p a:hover {
 }
 
 article p code,
-article ul p code,
-article ol p code {
+article ul code,
+article ol code {
 	@apply rounded-sm bg-[#232137] px-1.5 py-0.5 font-medium text-[#232137];
 	--tw-bg-opacity: 0.15;
 }
 
-article ul code,
-article ol code {
+article ul pre code,
+article ol pre code {
 	@apply px-0;
 }
 
