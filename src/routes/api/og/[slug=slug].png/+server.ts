@@ -3,7 +3,6 @@ import { Resvg } from '@resvg/resvg-js';
 import { html as toReactNode } from 'satori-html';
 
 import { OgImage } from '$lib/components';
-import type { CustomComponent } from '$lib/core/types';
 import { getPost, listAllSlugs } from '$lib/core/posts.js';
 
 export const prerender = true;
@@ -16,7 +15,7 @@ export function entries() {
 export async function GET({ params }) {
 	const post = await getPost(params.slug);
 
-	return componentToPng(OgImage, { title: post.metadata.title });
+	return renderPng(post.metadata.title);
 }
 
 const fontFile = await fetch(
@@ -24,9 +23,9 @@ const fontFile = await fetch(
 );
 const fontData: ArrayBuffer = await fontFile.arrayBuffer();
 
-async function componentToPng(component: CustomComponent, props: { title: string }) {
+async function renderPng(title: string) {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const result = (component as any).render(props);
+	const result = (OgImage as any).render({ title });
 	const markup = toReactNode(`${result.html}<style>${result.css.code}</style>`);
 	const svg = await satori(markup, {
 		fonts: [

@@ -1,4 +1,4 @@
-import type { SvelteComponent, SvelteComponentTyped } from 'svelte';
+import type { SvelteComponent } from 'svelte';
 
 type PostMetadata = {
 	id: string;
@@ -15,5 +15,4 @@ export type Post = {
 	metadata: PostMetadata;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type CustomComponent = typeof SvelteComponentTyped<any, any, any>;
+export type CustomComponent = typeof SvelteComponent;

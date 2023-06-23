@@ -21,7 +21,6 @@
 		/>
 		{#if isOpen}
 			<div transition:slide={{ axis: 'x' }} class="flex w-36 items-center md:w-48">
-				<!-- svelte-ignore a11y-autofocus -->
 				<input
 					in:fade={{ delay: 250, duration: 150 }}
 					out:fade={{ duration: 50 }}
