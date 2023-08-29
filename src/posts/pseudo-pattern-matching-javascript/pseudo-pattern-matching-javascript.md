@@ -5,7 +5,7 @@ date: '2023-07-26'
 topic: javascript
 isPublished: true
 ---
-One of my favourite parts of Elixir is the pattern matching. Here's an example:
+One of my favourite parts of Elixir is pattern matching. Here's an example:
 ```elixir showLineNumbers
 def weather_advisory(temperature) when temperature >= 100 do
   "Scorching hot! Stay hydrated and find shade."
