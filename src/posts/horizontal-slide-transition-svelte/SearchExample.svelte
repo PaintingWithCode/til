@@ -3,8 +3,26 @@
 
 	let isOpen = false;
 	let value = '';
+
 	$: if (!isOpen) {
 		value = '';
+	}
+
+	function toggleOpen() {
+		if (!isOpen) {
+			isOpen = true;
+			return;
+		}
+
+		if (value) {
+			value = '';
+			setTimeout(() => {
+				isOpen = false;
+			}, 125);
+			return;
+		}
+
+		isOpen = false;
 	}
 </script>
 
@@ -17,7 +35,7 @@
 			type="button"
 			aria-label="Open search"
 			class="mu mu-search h-12 w-12 leading-none text-dune-800"
-			on:click={() => (isOpen = !isOpen)}
+			on:click={toggleOpen}
 		/>
 		{#if isOpen}
 			<div transition:slide={{ axis: 'x' }} class="flex w-36 items-center md:w-48">
