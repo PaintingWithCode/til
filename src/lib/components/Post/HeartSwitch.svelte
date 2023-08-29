@@ -31,7 +31,7 @@
 		--fill-active: #dc2626;
 		--shadow: rgba(0, 9, 61, 0.5);
 		position: relative;
-		cursor: cursor-pointer;
+		cursor: pointer;
 		transform: scale(var(--s, 1)) translateZ(0);
 		transition: transform 0.2s;
 	}
