@@ -3,7 +3,8 @@ article h1 + * {
 }
 
 article p {
-	@apply mt-5 leading-relaxed text-dune-800;
+	@apply mt-5 leading-relaxed text-dune-900;
+	letter-spacing: -0.011rem;
 }
 
 article p a {
